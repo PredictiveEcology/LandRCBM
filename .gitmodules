@@ -1,0 +1,27 @@
+[submodule "modules/Biomass_borealDataPrep"]
+	path = modules/Biomass_borealDataPrep
+	url = https://github.com/PredictiveEcology/Biomass_borealDataPrep.git
+[submodule "modules/Biomass_speciesFactorial"]
+	path = modules/Biomass_speciesFactorial
+	url = https://github.com/PredictiveEcology/Biomass_speciesFactorial.git
+[submodule "modules/Biomass_speciesParameters"]
+	path = modules/Biomass_speciesParameters
+	url = https://github.com/PredictiveEcology/Biomass_speciesParameters.git
+[submodule "modules/CBM_defaults"]
+	path = modules/CBM_defaults
+	url = https://github.com/PredictiveEcology/CBM_defaults.git
+[submodule "modules/Biomass_yieldTables"]
+	path = modules/Biomass_yieldTables
+	url = https://github.com/PredictiveEcology/Biomass_yieldTables.git
+[submodule "modules/Biomass_core"]
+	path = modules/Biomass_core
+	url = https://github.com/PredictiveEcology/Biomass_core.git
+[submodule "modules/CBM_dataPrep"]
+	path = modules/CBM_dataPrep
+	url = https://github.com/PredictiveEcology/CBM_dataPrep.git
+[submodule "modules/LandRCBM_split3pools"]
+	path = modules/LandRCBM_split3pools
+	url = https://github.com/PredictiveEcology/LandRCBM_split3pools.git
+[submodule "modules/CBM_core"]
+	path = modules/CBM_core
+	url = https://github.com/PredictiveEcology/CBM_core.git
