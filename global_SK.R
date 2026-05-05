@@ -4,9 +4,6 @@ if (!require("SpaDES.project")){
   Require::Install(c("SpaDES.project"), repos = repos, dependencies = TRUE)
 }
 
-library("data.table")
-library("terra")
-
 out <- SpaDES.project::setupProject(
   overwrite = FALSE,
   paths = list(projectPath = projectPath,
@@ -21,7 +18,7 @@ out <- SpaDES.project::setupProject(
     spades.moduleCodeChecks = FALSE,
     spades.recoveryMode = FALSE,
     reproducible.useMemoise = TRUE),
-  times = list(start = 1998, end = 2020),
+  times = list(start = 2000, end = 2020),
   modules = c(
     "PredictiveEcology/Biomass_borealDataPrep@development",
     "PredictiveEcology/Biomass_speciesFactorial@development",
@@ -100,8 +97,8 @@ out <- SpaDES.project::setupProject(
       .plots = "png",
       .useCache = "generateData"
     )
-  
   )
+)
   
   out$loadOrder <- unlist(out$modules)
   
