@@ -1,0 +1,94 @@
+## Workflow based on from https://github.com/r-lib/actions/tree/v2/examples/bookdown.yaml
+
+name: LandRCBM manual
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build-manual-site:
+    if: "!contains(github.event.commits[0].message, '[skip-ci]')"
+    runs-on: ubuntu-latest
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      RENV_CONFIG_MRAN_ENABLED: false
+      RENV_CONFIG_PAK_ENABLED: true
+      RENV_PATHS_ROOT: ~/.cache/R/renv
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - uses: r-lib/actions/setup-pandoc@v2
+
+      - uses: r-lib/actions/setup-tinytex@v2
+
+      - uses: PredictiveEcology/actions/install-spatial-deps@v0.2
+
+      - name: Install additional system dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y \
+          libarchive-dev \
+          libmagick++-dev
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          extra-repositories: 'https://predictiveecology.r-universe.dev/'
+          Ncpus: 2
+          r-version: release
+          use-public-rspm: false
+
+      - uses: PredictiveEcology/actions/install-Require@v0.2
+        with:
+          GitTag: 'development'
+
+      - uses: PredictiveEcology/actions/install-SpaDES@v0.2
+
+      - uses: PredictiveEcology/actions/install-Rmd-pkgs@v0.2
+      - name: Install module package and other dependencies
+        run: |
+          pkgs <- unlist(SpaDES.core::packages(modules = list.files("./modules"),
+          paths = "./modules"))
+          pkgs <- Require::pkgDep2(pkgs)
+          Require::Require(c("rprojroot", "bibtex", "bookdown", "data.table", "downlit", "RefManageR","formatR", "knitr", "PredictiveEcology/SpaDES.docs"))
+          Require::Require(pkgs)
+
+        shell: Rscript {0}
+
+      - name: Cache bookdown results
+        uses: actions/cache@v3
+        with:
+          path: manual/_bookdown_files
+          key: bookdown-${{ hashFiles('**/*Rmd') }}
+          restore-keys: bookdown-
+
+      - name: Build LandRCBM manual
+        run: |
+          source("manual/RUNME.R")
+        shell: Rscript {0}
+
+      - name: Deploy to GitHub pages 🚀
+        if: github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          clean: false
+          branch: gh-pages
+          folder: docs

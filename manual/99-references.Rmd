@@ -1,0 +1,11 @@
+---
+bibliography:
+  - citations/references.bib
+csl: citations/ecology-letters.csl
+biblatexoptions: [refsegment=chapter]
+link-citations: true
+---
+
+# References {-}
+
+<!-- bibliography is automatically generated -->

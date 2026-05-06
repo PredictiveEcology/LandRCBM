@@ -1,0 +1,24 @@
+--- 
+title: "LandRCBM Manual"
+subtitle: "`r paste('v.', Sys.getenv('SpadesCBM_MAN_VERSION'))`"
+author: "John Doe"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography:
+  - citations/references.bib
+csl: citations/ecology-letters.csl
+biblatexoptions: [refsegment=chapter]
+link-citations: true
+---
+
+# Overview  {-}
+
+:::{.rmdimportant}
+This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, contact us [here]("https://github.com/PredictiveEcology/LandRCBM/issues").
+:::
+
+
+## Usage {-}
+
+

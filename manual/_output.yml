@@ -1,0 +1,12 @@
+bookdown::bs4_book:
+  css: css/style.css
+  theme:
+    primary: "#01665e"
+    fg: "#2b2121"
+    bg: "#ffffff"
+  footnotes_inline: false
+  split_bib: false   # otherwise the references will be printed twice given that the LaTex command is necessary for PDF
+  repo:
+    base: https://github.com/PredictiveEcology/LandRCBM
+    branch: main
+  edit: null
