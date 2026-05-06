@@ -1,4 +1,4 @@
-book_filename: LandRCBMCBMManual
+book_filename: LandRCBMManual
 repo: https://github.com/PredictiveEcology/LandRCBM
 output_dir: "../docs"
 before_chapter_script: _common.R
@@ -10,7 +10,5 @@ rmd_files:
   - index.Rmd
   - LandROverview.Rmd
   - spadesCBMOverview.Rmd
-  - ../modules/Biomass_yieldTables/Biomass_yieldTables.Rmd
-  - ../modules/LandRCBM_split3pools/LandRCBM_split3pools.Rmd
   - example.Rmd
   - 99-references.Rmd
