@@ -10,6 +10,7 @@ rmd_files:
   - index.Rmd
   - LandROverview.Rmd
   - spadesCBMOverview.Rmd
-  - ../modules/CBM_defaults/CBM_defaults.Rmd
+  - ../modules/Biomass_yieldTables/Biomass_yieldTables.Rmd
+  - ../modules/LandRCBM_split3pools/LandRCBM_split3pools.Rmd
   - example.Rmd
   - 99-references.Rmd
