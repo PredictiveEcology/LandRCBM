@@ -10,6 +10,6 @@ rmd_files:
   - index.Rmd
   - LandROverview.Rmd
   - spadesCBMOverview.Rmd
-  - ../modules/LandRCBM_split3pools/LandRCBM_split3pools.Rmd
+  - ../modules/CBM_defaults/CBM_defaults.Rmd
   - example.Rmd
   - 99-references.Rmd
