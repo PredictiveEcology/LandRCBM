@@ -4,13 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 1 Biomass_yieldTables | Example</title>
+<title>Chapter 3 Biomass_yieldTables | Example</title>
 <meta name="author" content="Dominique Caron, Camille Giuliano">
 <meta name="generator" content="bookdown 0.46 with bs4_book()">
-<meta property="og:title" content="Chapter 1 Biomass_yieldTables | Example">
+<meta property="og:title" content="Chapter 3 Biomass_yieldTables | Example">
 <meta property="og:type" content="book">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 1 Biomass_yieldTables | Example">
+<meta name="twitter:title" content="Chapter 3 Biomass_yieldTables | Example">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.10.0/transition.js"></script><script src="libs/bs3compat-0.10.0/tabs.js"></script><script src="libs/bs3compat-0.10.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -18,10 +18,33 @@
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
 <link rel="stylesheet" href="css/style.css">
-<meta name="description" content="This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us here.  1.1 Overview The objective of this module is...">
-<meta property="og:description" content="This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us here.  1.1 Overview The objective of this module is...">
-<meta name="twitter:description" content="This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us here.  1.1 Overview The objective of this module is...">
+<meta name="description" content="This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us here.  3.1 Overview The objective of this module is...">
+<meta property="og:description" content="This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us here.  3.1 Overview The objective of this module is...">
+<meta name="twitter:description" content="This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us here.  3.1 Overview The objective of this module is...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -45,10 +68,13 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Overview</a></li>
+<li><a class="" href="lexicon.html">Lexicon</a></li>
 <li><a class="" href="landr-overview.html">LandR Overview</a></li>
+<li><a class="" href="usage-1.html"><span class="header-section-number">1</span> Usage</a></li>
 <li><a class="" href="spadescbm-overview.html">spadesCBM Overview</a></li>
-<li><a class="active" href="biomass_yieldtables.html"><span class="header-section-number">1</span> Biomass_yieldTables</a></li>
-<li><a class="" href="landrcbm_split3pools.html"><span class="header-section-number">2</span> LandRCBM_split3pools</a></li>
+<li><a class="" href="usage-2.html"><span class="header-section-number">2</span> Usage</a></li>
+<li><a class="active" href="biomass_yieldtables.html"><span class="header-section-number">3</span> Biomass_yieldTables</a></li>
+<li><a class="" href="landrcbm_split3pools.html"><span class="header-section-number">4</span> LandRCBM_split3pools</a></li>
 <li><a class="" href="example.html">Example</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -58,38 +84,38 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="biomass_yieldtables" class="section level1" number="1">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="biomass_yieldtables" class="section level1" number="3">
 <h1>
-<span class="header-section-number">1</span> Biomass_yieldTables<a class="anchor" aria-label="anchor" href="#biomass_yieldtables"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3</span> Biomass_yieldTables<a class="anchor" aria-label="anchor" href="#biomass_yieldtables"><i class="fas fa-link"></i></a>
 </h1>
 <div class="rmdimportant">
 <p>This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us <a href="%22https://github.com/PredictiveEcology/Biomass_yieldTables/issues%22">here</a>.</p>
 </div>
-<div id="overview-1" class="section level2" number="1.1">
+<div id="overview-1" class="section level2" number="3.1">
 <h2>
-<span class="header-section-number">1.1</span> Overview<a class="anchor" aria-label="anchor" href="#overview-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1</span> Overview<a class="anchor" aria-label="anchor" href="#overview-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>The objective of this module is to produce yield curves for a user-specified study area from <code>LandR</code> simulations. To do so, the module initialize the landscape keeping species composition, but setting all biomass to 1 and ages 0. The module <code>Biomass_core</code> is then run internally without dispersal and disturbances to simulate vegetation dynamics from year 0 until all species dies out (i.e., maximum longevity among all species). The module records the above ground biomass of each species, in each pixel, at each time step to build yield tables that take into account species traits and competition.</p>
 </div>
-<div id="inputs" class="section level2" number="1.2">
+<div id="inputs" class="section level2" number="3.2">
 <h2>
-<span class="header-section-number">1.2</span> Inputs<a class="anchor" aria-label="anchor" href="#inputs"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2</span> Inputs<a class="anchor" aria-label="anchor" href="#inputs"><i class="fas fa-link"></i></a>
 </h2>
 <p>The module has the same inputs as <code>Biomass_core</code>. For now, there are no defaults for the inputs, and the user either need to provide all the inputs needed or use the module with other modules that would prepare the inputs (e.g., <code>Biomass_borealDataPrep</code>).</p>
 <div class="line-block">Name | Class | Description | Source |</div>
 </div>
-<div id="parameters" class="section level2" number="1.3">
+<div id="parameters" class="section level2" number="3.3">
 <h2>
-<span class="header-section-number">1.3</span> Parameters<a class="anchor" aria-label="anchor" href="#parameters"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.3</span> Parameters<a class="anchor" aria-label="anchor" href="#parameters"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="module-functioning" class="section level2" number="1.4">
+<div id="module-functioning" class="section level2" number="3.4">
 <h2>
-<span class="header-section-number">1.4</span> Module functioning<a class="anchor" aria-label="anchor" href="#module-functioning"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4</span> Module functioning<a class="anchor" aria-label="anchor" href="#module-functioning"><i class="fas fa-link"></i></a>
 </h2>
-<div id="events" class="section level3" number="1.4.1">
+<div id="events-1" class="section level3" number="3.4.1">
 <h3>
-<span class="header-section-number">1.4.1</span> Events<a class="anchor" aria-label="anchor" href="#events"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.1</span> Events<a class="anchor" aria-label="anchor" href="#events-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Everything that the module does is in the <code>init</code> event:</p>
 <ol style="list-style-type: decimal">
@@ -100,29 +126,29 @@
 <li>The module plots the resulting <code>yieldTables</code>.</li>
 </ol>
 </div>
-<div id="plotting" class="section level3" number="1.4.2">
+<div id="plotting" class="section level3" number="3.4.2">
 <h3>
-<span class="header-section-number">1.4.2</span> Plotting<a class="anchor" aria-label="anchor" href="#plotting"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.2</span> Plotting<a class="anchor" aria-label="anchor" href="#plotting"><i class="fas fa-link"></i></a>
 </h3>
 <p>By default, the module plots the yield table for 40 set of growth curves (a set of growth curve being the growth of all species coexisting in a given pixel, named <code>yieldTableIndex</code>). The number of set of growth curves can be changed with the parameter <code>numPlots</code>.</p>
 <p>The module also plots the maps the <code>yieldTableIndex</code>. Each forested pixel has a <code>yieldTableIndex</code> referencing the set of growth curve for this pixel.</p>
 </div>
-<div id="outputs" class="section level3" number="1.4.3">
+<div id="outputs" class="section level3" number="3.4.3">
 <h3>
-<span class="header-section-number">1.4.3</span> Outputs<a class="anchor" aria-label="anchor" href="#outputs"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.3</span> Outputs<a class="anchor" aria-label="anchor" href="#outputs"><i class="fas fa-link"></i></a>
 </h3>
 <div class="line-block">Name | Class | Description |</div>
 </div>
-<div id="links-to-other-modules" class="section level3" number="1.4.4">
+<div id="links-to-other-modules" class="section level3" number="3.4.4">
 <h3>
-<span class="header-section-number">1.4.4</span> Links to other modules<a class="anchor" aria-label="anchor" href="#links-to-other-modules"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.4</span> Links to other modules<a class="anchor" aria-label="anchor" href="#links-to-other-modules"><i class="fas fa-link"></i></a>
 </h3>
 <p>Since there are no default inputs for <code>Biomass_yieldTables</code>, it will most likely always be run with <code>Biomass_borealDataPrep</code> or another module that prepares the data to run <code>Biomass_core</code>. Using <code>Biomass_yieldTables</code> with <code>Biomass_borealDataPrep</code> would generate yield tables using the default <code>LandR</code> species traits, which often underestimate species coexistence. Using the module <code>Biomass_speciesParameters</code> and <code>Biomass_speciesFactorial</code> to calibrate species traits with permanent sample plots will help generate that capture more realistically competition.</p>
 <p>The yield tables created by this module as inputs for module that need growth curves. For example, we can use the yield tables to simulate cohort growth like <code>spadesCBM</code>.</p>
 </div>
-<div id="usage-1" class="section level3" number="1.4.5">
+<div id="usage-3" class="section level3" number="3.4.5">
 <h3>
-<span class="header-section-number">1.4.5</span> Usage<a class="anchor" aria-label="anchor" href="#usage-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4.5</span> Usage<a class="anchor" aria-label="anchor" href="#usage-3"><i class="fas fa-link"></i></a>
 </h3>
 <p>An example of a workflow to build yield tables for the RIA study area (Northeast British-Columbia) can be found in the script <code>global_LandRyieldTables.R</code> of the repository <a href="https://github.com/DominiqueCaron/LandRCBM">LandRCBM</a>.</p>
 
@@ -130,22 +156,22 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="spadescbm-overview.html">spadesCBM Overview</a></div>
-<div class="next"><a href="landrcbm_split3pools.html"><span class="header-section-number">2</span> LandRCBM_split3pools</a></div>
+<div class="prev"><a href="usage-2.html"><span class="header-section-number">2</span> Usage</a></div>
+<div class="next"><a href="landrcbm_split3pools.html"><span class="header-section-number">4</span> LandRCBM_split3pools</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#biomass_yieldtables"><span class="header-section-number">1</span> Biomass_yieldTables</a></li>
-<li><a class="nav-link" href="#overview-1"><span class="header-section-number">1.1</span> Overview</a></li>
-<li><a class="nav-link" href="#inputs"><span class="header-section-number">1.2</span> Inputs</a></li>
-<li><a class="nav-link" href="#parameters"><span class="header-section-number">1.3</span> Parameters</a></li>
+<li><a class="nav-link" href="#biomass_yieldtables"><span class="header-section-number">3</span> Biomass_yieldTables</a></li>
+<li><a class="nav-link" href="#overview-1"><span class="header-section-number">3.1</span> Overview</a></li>
+<li><a class="nav-link" href="#inputs"><span class="header-section-number">3.2</span> Inputs</a></li>
+<li><a class="nav-link" href="#parameters"><span class="header-section-number">3.3</span> Parameters</a></li>
 <li>
-<a class="nav-link" href="#module-functioning"><span class="header-section-number">1.4</span> Module functioning</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#events"><span class="header-section-number">1.4.1</span> Events</a></li>
-<li><a class="nav-link" href="#plotting"><span class="header-section-number">1.4.2</span> Plotting</a></li>
-<li><a class="nav-link" href="#outputs"><span class="header-section-number">1.4.3</span> Outputs</a></li>
-<li><a class="nav-link" href="#links-to-other-modules"><span class="header-section-number">1.4.4</span> Links to other modules</a></li>
-<li><a class="nav-link" href="#usage-1"><span class="header-section-number">1.4.5</span> Usage</a></li>
+<a class="nav-link" href="#module-functioning"><span class="header-section-number">3.4</span> Module functioning</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#events-1"><span class="header-section-number">3.4.1</span> Events</a></li>
+<li><a class="nav-link" href="#plotting"><span class="header-section-number">3.4.2</span> Plotting</a></li>
+<li><a class="nav-link" href="#outputs"><span class="header-section-number">3.4.3</span> Outputs</a></li>
+<li><a class="nav-link" href="#links-to-other-modules"><span class="header-section-number">3.4.4</span> Links to other modules</a></li>
+<li><a class="nav-link" href="#usage-3"><span class="header-section-number">3.4.5</span> Usage</a></li>
 </ul>
 </li>
 </ul>

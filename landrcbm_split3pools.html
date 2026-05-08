@@ -4,13 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 2 LandRCBM_split3pools | Example</title>
+<title>Chapter 4 LandRCBM_split3pools | Example</title>
 <meta name="author" content="Dominique Caron, Camille Giuliano">
 <meta name="generator" content="bookdown 0.46 with bs4_book()">
-<meta property="og:title" content="Chapter 2 LandRCBM_split3pools | Example">
+<meta property="og:title" content="Chapter 4 LandRCBM_split3pools | Example">
 <meta property="og:type" content="book">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 2 LandRCBM_split3pools | Example">
+<meta name="twitter:title" content="Chapter 4 LandRCBM_split3pools | Example">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.10.0/transition.js"></script><script src="libs/bs3compat-0.10.0/tabs.js"></script><script src="libs/bs3compat-0.10.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -18,10 +18,33 @@
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
 <link rel="stylesheet" href="css/style.css">
-<meta name="description" content="This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us here.  2.1 Overview The objective of this module is...">
-<meta property="og:description" content="This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us here.  2.1 Overview The objective of this module is...">
-<meta name="twitter:description" content="This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us here.  2.1 Overview The objective of this module is...">
+<meta name="description" content="This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us here.  4.1 Overview The objective of this module is...">
+<meta property="og:description" content="This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us here.  4.1 Overview The objective of this module is...">
+<meta name="twitter:description" content="This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us here.  4.1 Overview The objective of this module is...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -45,10 +68,13 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Overview</a></li>
+<li><a class="" href="lexicon.html">Lexicon</a></li>
 <li><a class="" href="landr-overview.html">LandR Overview</a></li>
+<li><a class="" href="usage-1.html"><span class="header-section-number">1</span> Usage</a></li>
 <li><a class="" href="spadescbm-overview.html">spadesCBM Overview</a></li>
-<li><a class="" href="biomass_yieldtables.html"><span class="header-section-number">1</span> Biomass_yieldTables</a></li>
-<li><a class="active" href="landrcbm_split3pools.html"><span class="header-section-number">2</span> LandRCBM_split3pools</a></li>
+<li><a class="" href="usage-2.html"><span class="header-section-number">2</span> Usage</a></li>
+<li><a class="" href="biomass_yieldtables.html"><span class="header-section-number">3</span> Biomass_yieldTables</a></li>
+<li><a class="active" href="landrcbm_split3pools.html"><span class="header-section-number">4</span> LandRCBM_split3pools</a></li>
 <li><a class="" href="example.html">Example</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -58,39 +84,39 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="landrcbm_split3pools" class="section level1" number="2">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="landrcbm_split3pools" class="section level1" number="4">
 <h1>
-<span class="header-section-number">2</span> LandRCBM_split3pools<a class="anchor" aria-label="anchor" href="#landrcbm_split3pools"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4</span> LandRCBM_split3pools<a class="anchor" aria-label="anchor" href="#landrcbm_split3pools"><i class="fas fa-link"></i></a>
 </h1>
 <div class="rmdimportant">
 <p>This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us <a href="%22https://github.com/PredictiveEcology/LandRCBM_split3pools/issues%22">here</a>.</p>
 </div>
-<div id="overview-2" class="section level2" number="2.1">
+<div id="overview-2" class="section level2" number="4.1">
 <h2>
-<span class="header-section-number">2.1</span> Overview<a class="anchor" aria-label="anchor" href="#overview-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1</span> Overview<a class="anchor" aria-label="anchor" href="#overview-2"><i class="fas fa-link"></i></a>
 </h2>
 <p>The objective of this module is to make data coming from the <code>LandR</code> ecosystem compatible with the <code>spadesCBM</code>. The module provides the yearly increments for the three above ground biomass pools: merchantable, foliage, and other. It does so for the yield tables useful for the spinup event of <code>spadesCBM</code>, and for the yearly cohort data which is used for the annual event of <code>spadesCBM</code>. The module can also translate disturbances provided by disturbance modules into the format that is expected in <code>spadesCBM</code>.</p>
 </div>
-<div id="inputs-1" class="section level2" number="2.2">
+<div id="inputs-1" class="section level2" number="4.2">
 <h2>
-<span class="header-section-number">2.2</span> Inputs<a class="anchor" aria-label="anchor" href="#inputs-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2</span> Inputs<a class="anchor" aria-label="anchor" href="#inputs-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>The inputs of <code>LandRCBM_split3pools</code> are a combination expected outputs from <code>LandR</code>, data to convert total above ground biomass into above merchantable, foliage and other biomass, and data that are expected as input in <code>spadesCBM</code>.</p>
 <p>The default inputs are for the RIA study area. Most inputs are expected to be provided by other modules (<code>CBMdefault</code>, <code>Biomass_core</code>, <code>Biomass_yieldTables</code>, <code>Biomass_borealDataPrep</code>, etc.).</p>
 <div class="line-block">Name | Class | Description | Source |</div>
 </div>
-<div id="parameters-1" class="section level2" number="2.3">
+<div id="parameters-1" class="section level2" number="4.3">
 <h2>
-<span class="header-section-number">2.3</span> Parameters<a class="anchor" aria-label="anchor" href="#parameters-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3</span> Parameters<a class="anchor" aria-label="anchor" href="#parameters-1"><i class="fas fa-link"></i></a>
 </h2>
 </div>
-<div id="module-functioning-1" class="section level2" number="2.4">
+<div id="module-functioning-1" class="section level2" number="4.4">
 <h2>
-<span class="header-section-number">2.4</span> Module functioning<a class="anchor" aria-label="anchor" href="#module-functioning-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4</span> Module functioning<a class="anchor" aria-label="anchor" href="#module-functioning-1"><i class="fas fa-link"></i></a>
 </h2>
-<div id="events-1" class="section level3" number="2.4.1">
+<div id="events-2" class="section level3" number="4.4.1">
 <h3>
-<span class="header-section-number">2.4.1</span> Events<a class="anchor" aria-label="anchor" href="#events-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4.1</span> Events<a class="anchor" aria-label="anchor" href="#events-2"><i class="fas fa-link"></i></a>
 </h3>
 <p>There are 7 events:</p>
 <ol style="list-style-type: decimal">
@@ -110,24 +136,24 @@
 <em>plotSummaries</em>: At the end of the simulation, plots the evolution of the above ground biomass of each pools for each species and for the entire landscape.</li>
 </ol>
 </div>
-<div id="plotting-1" class="section level3" number="2.4.2">
+<div id="plotting-1" class="section level3" number="4.4.2">
 <h3>
-<span class="header-section-number">2.4.2</span> Plotting<a class="anchor" aria-label="anchor" href="#plotting-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4.2</span> Plotting<a class="anchor" aria-label="anchor" href="#plotting-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>There are 3 types of plots that are created.</p>
 <p>First, the modules plots figures related to the yield tables. The module returns a figure for the yield curves of total above ground biomass for a number (controlled by the parameter <code>numPixGroupPlots</code>) yield table ids. For the same yield table ids, the module also plots the yield tables divided into above ground carbon pools and the resulting increments.</p>
 <p>Second, at a regular interval, controlled by the parameter <code>.plotInterval</code>, the modules returns maps of the biomass and increments of merchantable, foliage, and other carbon pools.</p>
 <p>Third, at the end of the simulation, the modules returns figures of the evolution of the above ground biomass divided into pools across the landscape for each species.</p>
 </div>
-<div id="outputs-1" class="section level3" number="2.4.3">
+<div id="outputs-1" class="section level3" number="4.4.3">
 <h3>
-<span class="header-section-number">2.4.3</span> Outputs<a class="anchor" aria-label="anchor" href="#outputs-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4.3</span> Outputs<a class="anchor" aria-label="anchor" href="#outputs-1"><i class="fas fa-link"></i></a>
 </h3>
 <div class="line-block">Name | Class | Description |</div>
 </div>
-<div id="links-to-other-modules-1" class="section level3" number="2.4.4">
+<div id="links-to-other-modules-1" class="section level3" number="4.4.4">
 <h3>
-<span class="header-section-number">2.4.4</span> Links to other modules<a class="anchor" aria-label="anchor" href="#links-to-other-modules-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.4.4</span> Links to other modules<a class="anchor" aria-label="anchor" href="#links-to-other-modules-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>The module can be used as a standalone, but will be most likely used with other modules. The module from the <code>Biomass_*</code> family can provide most inputs needed by <code>LandRCBM_split3pools</code> and simulate vegetation dynamics. Disturbance modules like <code>fireSense</code> can be used to simulate disturbances. Finally, <code>CBM_core</code> can be used to simulate the carbon dynamics between the different carbon pools.</p>
 
@@ -135,21 +161,21 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="biomass_yieldtables.html"><span class="header-section-number">1</span> Biomass_yieldTables</a></div>
+<div class="prev"><a href="biomass_yieldtables.html"><span class="header-section-number">3</span> Biomass_yieldTables</a></div>
 <div class="next"><a href="example.html">Example</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#landrcbm_split3pools"><span class="header-section-number">2</span> LandRCBM_split3pools</a></li>
-<li><a class="nav-link" href="#overview-2"><span class="header-section-number">2.1</span> Overview</a></li>
-<li><a class="nav-link" href="#inputs-1"><span class="header-section-number">2.2</span> Inputs</a></li>
-<li><a class="nav-link" href="#parameters-1"><span class="header-section-number">2.3</span> Parameters</a></li>
+<li><a class="nav-link" href="#landrcbm_split3pools"><span class="header-section-number">4</span> LandRCBM_split3pools</a></li>
+<li><a class="nav-link" href="#overview-2"><span class="header-section-number">4.1</span> Overview</a></li>
+<li><a class="nav-link" href="#inputs-1"><span class="header-section-number">4.2</span> Inputs</a></li>
+<li><a class="nav-link" href="#parameters-1"><span class="header-section-number">4.3</span> Parameters</a></li>
 <li>
-<a class="nav-link" href="#module-functioning-1"><span class="header-section-number">2.4</span> Module functioning</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#events-1"><span class="header-section-number">2.4.1</span> Events</a></li>
-<li><a class="nav-link" href="#plotting-1"><span class="header-section-number">2.4.2</span> Plotting</a></li>
-<li><a class="nav-link" href="#outputs-1"><span class="header-section-number">2.4.3</span> Outputs</a></li>
-<li><a class="nav-link" href="#links-to-other-modules-1"><span class="header-section-number">2.4.4</span> Links to other modules</a></li>
+<a class="nav-link" href="#module-functioning-1"><span class="header-section-number">4.4</span> Module functioning</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#events-2"><span class="header-section-number">4.4.1</span> Events</a></li>
+<li><a class="nav-link" href="#plotting-1"><span class="header-section-number">4.4.2</span> Plotting</a></li>
+<li><a class="nav-link" href="#outputs-1"><span class="header-section-number">4.4.3</span> Outputs</a></li>
+<li><a class="nav-link" href="#links-to-other-modules-1"><span class="header-section-number">4.4.4</span> Links to other modules</a></li>
 </ul>
 </li>
 </ul>
