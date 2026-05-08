@@ -1,0 +1,45 @@
+---
+  title: "Lexicon"
+---
+  
+```{r setup-Lexicon, include = FALSE}
+```
+
+# Lexicon {-}
+
+If this is your first time encountering a model built within the SpaDES framework, you may be unfamiliar with several terms used in this manual. Here we offer a lexicon to help familiarize users with terms and concepts relevant to spadesCBM. A more comprehensive guide and introduction to robust and nimble scientific workflows using SpaDES can be found [here](https://predictiveecology.org/training/_book/).
+
+## Basic structure of a SpaDES project {-}
+
+SpaDES projects aim to follow the principles of the PERFICT approach of @mcintire2022. The PERFICT approach aims to *P*redict regularly frm models that are *E*valuated, *R*eusable, *F*reely accessible, and *I*nteroperable, and that are part of *C*ontinuous workflows that are *T*ested regularly. More information on how this approach fits within the SpaDES framework can be found [here](https://predictiveecology.org/training/_book/intro.html).  
+Using modules allows us to break up a model's code into meaningful themes and/or uses that can easily be moved, swapped or replaced. SpaDES projects use modules in its standardized structure to allow for this nimbleness. Each module defines its own metadata, identifying the inputs and outputs of the code, allowing R to connect the module with others.
+
+### Modules {-}
+In its simplest form, a SpaDES module is comprised of R code that has metadata that gets put into functions.
+
+### Metadata {-}
+inputs and outputs are described in the metadata of the module. 
+
+### Events {-}
+The functions of the module can be further subdivided into events. These events are scheduled in the module to be run one or many times. 
+
+### `.inputObjects()` {-}
+This function is found at the end of a module's script. This is where default inputs are supplied. For most default inputs in spadesCBM, the module will check if a user has supplied their own input, and if not, will use the default described in the module's `.inputObjects()` call. 
+
+### Simlist {-}
+Objects cannot be shared across modules unless they are added to the simlist. It is a rich data object that acts like a list or an environment. All outputs of a module or model are added to this simlist. 
+
+### `prepInputs()`
+This function is used to prepare R objects from remote (usually URLs) or local data sources. This enables easily repeatable continuous workflows and facilitates commonly used steps for getting, loading, and processing data. More information on the function and how it can be used with SpaDES-related projects can be found [here](https://predictiveecology.org/training/_book/prepInputs.html). 
+
+## Running a global script {-}
+### The `setupProject()` function {-}
+`setupProject()` is a function in the `SpaDES.project` package. It allows the user to set a variety of options before running. When run, `setupProject` does a series of very specific things in a particular order to reduce the chances of package conflicts and user errors. 
+In spadesCBM, we use our `setupProject()` call to select the modules to run and their respective GitHub branches, project paths, caching and saving options,our python options and download, and certain project specific input objects.
+to learn more about the `SpaDES.project` package and `setupProject()` you can view the training chapter [here](https://predictiveecology.org/training/_book/workflowSimple2.html).
+
+### The `simInitAndSpades2()` function {-}
+Once we have run our `setupProject()` call, we can run our model using `simInitAndSpades2()`. One of the outputs of this function is the simlist, allowing the user to view all outputs from their simulation.
+
+### Folder structure of a SpaDES module {-}
+Our spadesCBM modules use the basic folder structure for all SpaDES modules. Each have their respective `.R` scripts, an `.Rmd` file with their documentation used in this manual, and a `tests` folder containing the module's tests. Some will also have an `R` folder containing other scripts that get sourced when running the module. These can include basic functions used in the module or the creation of default objects only used when the user doesn't provide a specific input.

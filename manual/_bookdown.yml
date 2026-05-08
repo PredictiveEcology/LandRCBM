@@ -8,6 +8,7 @@ language:
 delete_merged_file: true
 rmd_files:
   - index.Rmd
+  - lexicon.Rmd
   - LandROverview.Rmd
   - spadesCBMOverview.Rmd
   - ../modules/Biomass_yieldTables/Biomass_yieldTables.Rmd
