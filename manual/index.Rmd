@@ -15,9 +15,12 @@ link-citations: true
 # Overview  {-}
 
 :::{.rmdimportant}
-This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, contact us [here]("https://github.com/PredictiveEcology/LandRCBM/issues").
+This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, contact us [here](https://github.com/PredictiveEcology/LandRCBM/issues).
 :::
 
+[LandRCBM](https://github.com/PredictiveEcology/LandRCBM) is a modular, transparent, and spatially explicit carbon modelling framework that links the [LandR](https://landr-manual.predictiveecology.org/) vegetation model with the [spadesCBM](https://predictiveecology.github.io/spadesCBM/#overview) carbon budget model. 
+
+[LandRCBM](https://github.com/PredictiveEcology/LandRCBM) development follows the [PERFICT](https://predictiveecology.github.io/spadesCBM/lexicon.html#basic-structure-of-a-spades-project) approach of @mcintire2022 for ecological modelling systems, an approach that helps solve many of the complex issues in ecological modelling, supports continuous workflows, and nimble, enter operable modelling systems. The [SpaDES](https://SpaDES.PredictiveEcology.org) platform is the toolkit that enables this implementation of the [PERFICT](https://predictiveecology.github.io/spadesCBM/lexicon.html#basic-structure-of-a-spades-project) principle.
 
 ## Usage {-}
 

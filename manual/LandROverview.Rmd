@@ -6,3 +6,9 @@
 ```
 
 # LandR Overview {-}
+
+[LandR](https://landr-manual.predictiveecology.org/) is a collection of SpaDES modules aimed at simulating forest dynamics across large spatial scales, while taking into account various disturbances that affect them (e.g., wildfire and climate change), as well as interactions with other components of forest systems, such as bird communities and ungulates (via changes in the habitat of these species), and carbon cycling. 
+
+In-depth information on the functioning, structure, and science behind [LandR](https://landr-manual.predictiveecology.org/) can be found in its  [manual](https://landr-manual.predictiveecology.org/). Similar to this website, it is a living document that is continually updated as the model evolves. 
+
+# Usage
