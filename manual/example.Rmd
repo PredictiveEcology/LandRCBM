@@ -1,5 +1,15 @@
----
-  title: "Example"
+--- 
+title: "LandRCBM Manual"
+subtitle: "`r paste('v.', Sys.getenv('SpadesCBM_MAN_VERSION'))`"
+author: "John Doe"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography:
+  - citations/references.bib
+csl: citations/ecology-letters.csl
+biblatexoptions: [refsegment=chapter]
+link-citations: true
 ---
   
 ```{r setup-Lexicon, include = FALSE}
