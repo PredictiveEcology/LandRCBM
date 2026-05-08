@@ -13,4 +13,4 @@ The collection of [SpaDES](https://SpaDES.PredictiveEcology.org) modules in [spa
 
 In-depth information on the functioning, structure, and science behind [spadesCBM](https://github.com/PredictiveEcology/spadesCBM.git) can be found in its  [manual](https://predictiveecology.github.io/spadesCBM/#overview). Similar to this website, it is a living document that is continually updated as the model evolves. 
 
-# Usage
+## Usage

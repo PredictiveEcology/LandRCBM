@@ -11,4 +11,4 @@
 
 In-depth information on the functioning, structure, and science behind [LandR](https://landr-manual.predictiveecology.org/) can be found in its  [manual](https://landr-manual.predictiveecology.org/). Similar to this website, it is a living document that is continually updated as the model evolves. 
 
-# Usage
+## Usage
