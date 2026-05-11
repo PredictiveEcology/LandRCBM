@@ -29,7 +29,7 @@ Five [modules](https://predictiveecology.github.io/LandRCBM/Lexicon.html#modules
 
 A [LandRCBM](https://github.com/PredictiveEcology/LandRCBM)-specific module was also created to bridge outputs between the two models and is necessary to run LandR simulations. [LandRCBM_split3pools](https://github.com/PredictiveEcology/LandRCBM_split3pools/tree/main) builds yearly growth increments using the biomass outputs of [Biomass_core](https://github.com/PredictiveEcology/Biomass_core) and splits them between the 3 main aboveground biomass pools (merchantable, foliage, and other) for use in the carbon transfers of [CBM_core](https://github.com/PredictiveEcology/CBM_core). Details on this module's functioning can be found in its [manual chapter](https://predictiveecology.github.io/LandRCBM/landrcbm_split3pools.html). 
 
-![](https://raw.githubusercontent.com/PredictiveEcology/LandRCBM/main/manual/images/LandRCBMconceptualDiagram.png){fig-align="center" width="700"}
+![](https://raw.githubusercontent.com/PredictiveEcology/LandRCBM/main/manual/images/LandRCBMconceptualDiagram.png){fig-align="center" width="650"}
 *Figure 1: Conceptual diagram of a basic LandRCBM run with a disturbance module
 
 These modules are the basis with which one can run LandRCBM. However, thanks to the flexibility of the SpaDES platform, it is possible to link additional modules when running simulations. The most common use-case for this is the addition of one or more disturbance models. Fire models, for examples, can be run alongside LandRCBM and users can add the [Biomass_regeneration](https://github.com/PredictiveEcology/Biomass_regeneration) module to incorporation stand removal, serotiny, and regeneration into the vegetation dynamics. 
