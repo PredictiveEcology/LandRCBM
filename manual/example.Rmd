@@ -16,3 +16,35 @@ link-citations: true
 ```
 
 # Example {-}
+
+Here we provide an example script to run a small area of managed forests British Columbia between 2000 and 2010. This example is relatively lightweight and most computers should be able to run the simulation. However, this does require a significant amount of storage space and will download several large files. Due to this as well as initial caching, the first time you run this script it will likely take a few hours, but re-running the script should only be minutes long. 
+
+If you have access to the computing power, larger areas and different scenarios can be found in scripts [here](https://github.com/PredictiveEcology/LandRCBM). Note that some of these require >100Gbs of RAM to run. 
+
+## Setup {-}
+A few things need to be set up the first time running spadesCBM. While the global script below will take care and guide you through most of these, here are some things to note during the initial set up. 
+
+### Google account {-}
+
+To run the provided example, users need to access some of the data using the [googledrive](https://cloud.r-project.org/web/packages/googledrive/index.html) R package (part of the [tidyverse](https://www.tidyverse.org/) family of R packages). 
+During the [simInit()](https://spades-core.predictiveecology.org/reference/simInit.html) (or [simInitAndSpades](https://rdrr.io/cran/SpaDES.core/man/simInitAndSpades.html)) call, a function to initialize (or initialize and run) [SpaDES](https://SpaDES.PredictiveEcology.org)-based simulations, R will prompt you to either choose a previously authenticated account (if you have previously used [googledrive](https://cloud.r-project.org/web/packages/googledrive/index.html)) or to open a browser window and authenticate. 
+
+Make sure you give [tidyverse](https://www.tidyverse.org/) read/write access to your files:
+  
+![](https://github.com/PredictiveEcology/PredictiveEcology.org/blob/main/training/assets/img/gdriveauth.png?raw=true){fig-align="center" width="500"}
+
+  
+### Python {-}
+
+The [CBM_core](https://github.com/PredictiveEcology/CBM_core.git) module, which is the simulation module of [spadesCBM](https://github.com/PredictiveEcology/spadesCBM.git), requires Python >=3.9 and <=3.12.7.
+
+If a suitable version of Python does not already exist on your computer,
+The [`reticulate`](https://rstudio.github.io/reticulate/) package will be used to install it using the [pyenv](https://github.com/pyenv/pyenv) or [pyenv-win](https://github.com/pyenv-win/pyenv-win).
+
+If you are using a Windows computer with Git installed, the [pyenv-win](https://github.com/pyenv-win/pyenv-win) tool will be acquired and managed directly by [`reticulate`](https://rstudio.github.io/reticulate/). If you are using a Windows computer without Git installed, you will be prompted to allow the [pyenv-win](https://github.com/pyenv-win/pyenv-win) tool to be downloaded directly from Github to your local user application data directory (`tools::R_user_dir("CBMutils")`).
+
+If the Python installation process fails or you would prefer to manually install Python, it can be downloaded directly from [python.org/downloads](https://python.org/downloads). The calls to Python are for functions from a package called [libcbm](https://cat-cfs.github.io/libcbm_py/). Python functions are only used in the [CBM_core](https://github.com/PredictiveEcology/CBM_core.git) module. Details on [CBM_core](https://github.com/PredictiveEcology/CBM_core.git) module and the Python functions are provided in [CBM_core](https://github.com/PredictiveEcology/CBM_core.git) chapter in this manual.
+
+  
+## Running the simulation {-}
+
