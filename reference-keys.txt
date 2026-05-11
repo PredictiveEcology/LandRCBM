@@ -1,6 +1,4 @@
 prepinputs
-usage-1
-usage-2
 biomass_yieldtables
 overview-1
 inputs

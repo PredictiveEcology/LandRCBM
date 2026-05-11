@@ -42,9 +42,9 @@
     }
   </style>
 <link rel="stylesheet" href="css/style.css">
-<meta name="description" content="A book created with bookdown.">
-<meta property="og:description" content="A book created with bookdown.">
-<meta name="twitter:description" content="A book created with bookdown.">
+<meta name="description" content="Here we provide an example script to run a small area of managed forests British Columbia between 2000 and 2010. This example is relatively lightweight and most computers should be able to run the...">
+<meta property="og:description" content="Here we provide an example script to run a small area of managed forests British Columbia between 2000 and 2010. This example is relatively lightweight and most computers should be able to run the...">
+<meta name="twitter:description" content="Here we provide an example script to run a small area of managed forests British Columbia between 2000 and 2010. This example is relatively lightweight and most computers should be able to run the...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -85,14 +85,51 @@
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="example" class="section level1 unnumbered">
 <h1>Example<a class="anchor" aria-label="anchor" href="#example"><i class="fas fa-link"></i></a>
 </h1>
+<p>Here we provide an example script to run a small area of managed forests British Columbia between 2000 and 2010. This example is relatively lightweight and most computers should be able to run the simulation. However, this does require a significant amount of storage space and will download several large files. Due to this as well as initial caching, the first time you run this script it will likely take a few hours, but re-running the script should only be minutes long.</p>
+<p>If you have access to the computing power, larger areas and different scenarios can be found in scripts <a href="https://github.com/PredictiveEcology/LandRCBM">here</a>. Note that some of these require &gt;100Gbs of RAM to run.</p>
+<div id="setup" class="section level2 unnumbered">
+<h2>Setup<a class="anchor" aria-label="anchor" href="#setup"><i class="fas fa-link"></i></a>
+</h2>
+<p>A few things need to be set up the first time running spadesCBM. While the global script below will take care and guide you through most of these, here are some things to note during the initial set up.</p>
+<div id="google-account" class="section level3 unnumbered">
+<h3>Google account<a class="anchor" aria-label="anchor" href="#google-account"><i class="fas fa-link"></i></a>
+</h3>
+<p>To run the provided example, users need to access some of the data using the <a href="https://cloud.r-project.org/web/packages/googledrive/index.html">googledrive</a> R package (part of the <a href="https://www.tidyverse.org/">tidyverse</a> family of R packages).
+During the <a href="https://spades-core.predictiveecology.org/reference/simInit.html">simInit()</a> (or <a href="https://rdrr.io/cran/SpaDES.core/man/simInitAndSpades.html">simInitAndSpades</a>) call, a function to initialize (or initialize and run) <a href="https://SpaDES.PredictiveEcology.org">SpaDES</a>-based simulations, R will prompt you to either choose a previously authenticated account (if you have previously used <a href="https://cloud.r-project.org/web/packages/googledrive/index.html">googledrive</a>) or to open a browser window and authenticate.</p>
+<p>Make sure you give <a href="https://www.tidyverse.org/">tidyverse</a> read/write access to your files:</p>
+<div class="inline-figure"><img src="https://github.com/PredictiveEcology/PredictiveEcology.org/blob/main/training/assets/img/gdriveauth.png?raw=true" fig-align="center" width="500"></div>
+</div>
+<div id="python" class="section level3 unnumbered">
+<h3>Python<a class="anchor" aria-label="anchor" href="#python"><i class="fas fa-link"></i></a>
+</h3>
+<p>The <a href="https://github.com/PredictiveEcology/CBM_core.git">CBM_core</a> module, which is the simulation module of <a href="https://github.com/PredictiveEcology/spadesCBM.git">spadesCBM</a>, requires Python &gt;=3.9 and &lt;=3.12.7.</p>
+<p>If a suitable version of Python does not already exist on your computer,
+The <a href="https://rstudio.github.io/reticulate/"><code>reticulate</code></a> package will be used to install it using the <a href="https://github.com/pyenv/pyenv">pyenv</a> or <a href="https://github.com/pyenv-win/pyenv-win">pyenv-win</a>.</p>
+<p>If you are using a Windows computer with Git installed, the <a href="https://github.com/pyenv-win/pyenv-win">pyenv-win</a> tool will be acquired and managed directly by <a href="https://rstudio.github.io/reticulate/"><code>reticulate</code></a>. If you are using a Windows computer without Git installed, you will be prompted to allow the <a href="https://github.com/pyenv-win/pyenv-win">pyenv-win</a> tool to be downloaded directly from Github to your local user application data directory (<code>tools::R_user_dir("CBMutils")</code>).</p>
+<p>If the Python installation process fails or you would prefer to manually install Python, it can be downloaded directly from <a href="https://python.org/downloads">python.org/downloads</a>. The calls to Python are for functions from a package called <a href="https://cat-cfs.github.io/libcbm_py/">libcbm</a>. Python functions are only used in the <a href="https://github.com/PredictiveEcology/CBM_core.git">CBM_core</a> module. Details on <a href="https://github.com/PredictiveEcology/CBM_core.git">CBM_core</a> module and the Python functions are provided in <a href="https://github.com/PredictiveEcology/CBM_core.git">CBM_core</a> chapter in this manual.</p>
+</div>
+</div>
+<div id="running-the-simulation" class="section level2 unnumbered">
+<h2>Running the simulation<a class="anchor" aria-label="anchor" href="#running-the-simulation"><i class="fas fa-link"></i></a>
+</h2>
 
+</div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="landrcbm_split3pools.html"><span class="header-section-number">2</span> LandRCBM_split3pools</a></div>
 <div class="next"><a href="references.html">References</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#example">Example</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#example">Example</a></li>
+<li>
+<a class="nav-link" href="#setup">Setup</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#google-account">Google account</a></li>
+<li><a class="nav-link" href="#python">Python</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#running-the-simulation">Running the simulation</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -109,7 +146,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>LandRCBM Manual</strong>: v." was written by John Doe. It was last built on 2026-05-08.</p>
+    <p>"<strong>LandRCBM Manual</strong>: v." was written by John Doe. It was last built on 2026-05-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
