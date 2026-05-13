@@ -87,28 +87,33 @@
 </h1>
 <p><a href="https://landr-manual.predictiveecology.org/">LandR</a> is a collection of SpaDES modules aimed at simulating forest dynamics across large spatial scales, while taking into account various disturbances that affect them (e.g., wildfire and climate change), as well as interactions with other components of forest systems, such as bird communities and ungulates (via changes in the habitat of these species), and carbon cycling.</p>
 <p>In-depth information on the functioning, structure, and science behind <a href="https://landr-manual.predictiveecology.org/">LandR</a> can be found in its <a href="https://landr-manual.predictiveecology.org/">manual</a>. Similar to this website, it is a living document that is continually updated as the model evolves.</p>
-<div id="usage-1" class="section level2 unnumbered">
-<h2>Usage<a class="anchor" aria-label="anchor" href="#usage-1"><i class="fas fa-link"></i></a>
-</h2>
-</div>
 <div id="modules-1" class="section level2 unnumbered">
 <h2>Modules<a class="anchor" aria-label="anchor" href="#modules-1"><i class="fas fa-link"></i></a>
 </h2>
 <div id="biomass_borealdataprep" class="section level3 unnumbered">
 <h3>Biomass_borealDataPrep<a class="anchor" aria-label="anchor" href="#biomass_borealdataprep"><i class="fas fa-link"></i></a>
 </h3>
+<p>This <a href="https://predictiveecology.github.io/LandRCBM/lexicon.html#modules">module</a> prepares all necessary inputs for <a href="https://github.com/PredictiveEcology/Biomass_core">Biomass_core</a> based on data available for forests across Canada forests, but focused on Western Canada boreal forest systems. This module cleans up raw input data, calculated species biomass per pixel, prepares various species traits, defines ecolocations, and creates the initial landscape conditions. For more information on the background, functioning, and potential module linkages in this module, see its <a href="https://landr-manual.predictiveecology.org/landr-biomass_borealdataprep-module.html">manual chapter</a>.</p>
 </div>
-<div id="biomass_specisfactorial" class="section level3 unnumbered">
-<h3>Biomass_specisFactorial<a class="anchor" aria-label="anchor" href="#biomass_specisfactorial"><i class="fas fa-link"></i></a>
+<div id="biomass_speciesfactorial" class="section level3 unnumbered">
+<h3>Biomass_speciesFactorial<a class="anchor" aria-label="anchor" href="#biomass_speciesfactorial"><i class="fas fa-link"></i></a>
 </h3>
+<p>This <a href="https://predictiveecology.github.io/LandRCBM/lexicon.html#modules">module</a> creates and runs a factorial experiment for LANDIS-II-like species traits used in <a href="https://github.com/PredictiveEcology/Biomass_speciesParameters">Biomass_speciesParametes</a>. While this module does not have a manual chapter, more information along with its code can be found in its <a href="https://github.com/PredictiveEcology/Biomass_speciesFactorial">module repository</a>.</p>
 </div>
 <div id="biomass_speciesparameters" class="section level3 unnumbered">
 <h3>Biomass_speciesParameters<a class="anchor" aria-label="anchor" href="#biomass_speciesparameters"><i class="fas fa-link"></i></a>
 </h3>
+<p>This <a href="https://predictiveecology.github.io/LandRCBM/lexicon.html#modules">module</a> calibrates species growth and mortality trait values used in <a href="https://github.com/PredictiveEcology/Biomass_core">Biomass_core</a> and identifies the combination of trait values that allows a better match to the observed growth curves by matching theoretical species’ curves obtained with different trait values against observed growth curves derived from Permanent Sample Plots across Canada. More information on the functioning and specific traits calibrated in this module can be found in its <a href="https://landr-manual.predictiveecology.org/landr-biomass_speciesparameters-module.html">manual chapter</a>.</p>
+</div>
+<div id="biomass_regeneration" class="section level3 unnumbered">
+<h3>Biomass_regeneration<a class="anchor" aria-label="anchor" href="#biomass_regeneration"><i class="fas fa-link"></i></a>
+</h3>
+<p>This <a href="https://predictiveecology.github.io/LandRCBM/lexicon.html#modules">module</a> simulated post-fire regeneration for <a href="https://github.com/PredictiveEcology/Biomass_core">Biomass_core</a>. It is mostly based on the post-disturbance regeneration mechanisms present in <a href="https://www.landis-ii.org/extensions">LANDIS-II Biomass Succession Extension v.3.2.1</a>. This module activates post-fire mortality and activates serotiny and resprouting mechanisms for each species on affected pixels depending on their traits. Mortality behaves in a stand-replacing fashion in this module. While this module does not yet have a manual chapter, more information on its functioning, along with some of its differences with the <a href="https://www.landis-ii.org/extensions">LANDIS-II Biomass Succession Extension v.3.2.1</a> can be found in the <code>README.md</code> and <code>Biomass_regeneration.Rmd</code> files in its <a href="https://github.com/PredictiveEcology/Biomass_regeneration">GitHub repository</a>.</p>
 </div>
 <div id="biomass_core" class="section level3 unnumbered">
 <h3>Biomass_core<a class="anchor" aria-label="anchor" href="#biomass_core"><i class="fas fa-link"></i></a>
 </h3>
+<p>This <a href="https://predictiveecology.github.io/LandRCBM/lexicon.html#modules">module</a> is the core forest succession simulation module of LandR. It simulates tree cohort ageing, growth, mortality and competition for light resources, as well as seed dispersal, in a spatially explicit manner and using a yearly time step. It is based on the <a href="https://www.landis-ii.org/extensions">LANDIS-II Biomass Succession Extension v.3.2.1</a> with a few changes. You can find details of the differences between the two on <a href="https://landr-manual.predictiveecology.org/landr-biomass_core-module.html#biomass-core-vs-lbse">this page</a>. <a href="https://github.com/PredictiveEcology/Biomass_core">Biomass_core</a> is intended to be used with data/calibration modules, disturbance modules and validation modules, amongst others. You can view a visual map of many modules in the SpaDES ecosystem of models and how they connect to Biomass_core <a href="https://rpubs.com/PredictiveEcology/LandR_Module_Ecosystem">here</a>. More in-depth information on <a href="https://github.com/PredictiveEcology/Biomass_core">Biomass_core</a> can be found in its <a href="https://landr-manual.predictiveecology.org/landr-biomass_core-module.html">manual chapter</a>.</p>
 
 </div>
 </div>
@@ -120,12 +125,12 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#landr-overview">LandR Overview</a></li>
-<li><a class="nav-link" href="#usage-1">Usage</a></li>
 <li>
 <a class="nav-link" href="#modules-1">Modules</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#biomass_borealdataprep">Biomass_borealDataPrep</a></li>
-<li><a class="nav-link" href="#biomass_specisfactorial">Biomass_specisFactorial</a></li>
+<li><a class="nav-link" href="#biomass_speciesfactorial">Biomass_speciesFactorial</a></li>
 <li><a class="nav-link" href="#biomass_speciesparameters">Biomass_speciesParameters</a></li>
+<li><a class="nav-link" href="#biomass_regeneration">Biomass_regeneration</a></li>
 <li><a class="nav-link" href="#biomass_core">Biomass_core</a></li>
 </ul>
 </li>

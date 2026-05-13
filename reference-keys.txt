@@ -8,7 +8,7 @@ events-1
 plotting
 outputs
 links-to-other-modules
-usage-2
+usage-1
 landrcbm_split3pools
 overview-2
 inputs-1
