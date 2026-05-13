@@ -2,7 +2,6 @@ prepinputs
 biomass_yieldtables
 overview-1
 inputs
-parameters
 module-functioning
 events-1
 plotting
@@ -12,7 +11,7 @@ usage-1
 landrcbm_split3pools
 overview-2
 inputs-1
-parameters-1
+parameters
 module-functioning-1
 events-2
 plotting-1
