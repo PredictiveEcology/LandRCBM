@@ -88,24 +88,24 @@
 <p><a href="https://github.com/PredictiveEcology/spadesCBM.git">spadesCBM</a> is a modular, transparent, and spatially explicit implementation of the logic, pools structure, equations, and default assumptions of the Carbon Budget Model of the Canadian Forest Sector (<a href="https://natural-resources.canada.ca/climate-change/climate-change-impacts-forests/carbon-accounting/carbon-budget-model/13107">CBM</a>). It applies the science presented in <span class="citation">Kurz <em>et al.</em> (<a href="references.html#ref-kurz2009">2009</a>)</span> in a similar way to the simulations in <span class="citation">Boisvenue <em>et al.</em> (<a href="references.html#ref-boisvenue2016">2016</a>)</span> and <span class="citation">Boisvenue <em>et al.</em> (<a href="references.html#ref-boisvenue2022">2022</a>)</span> but calls Python functions for annual processes (see <a href="https://github.com/cat-cfs/libcbm_py/tree/main/examples/cbm_exn">libcbm_py/examples/cbm_exn</a>). These functions and <a href="https://github.com/PredictiveEcology/spadesCBM.git">spadesCBM</a> are, like much of modelling-based science, continuously under development.</p>
 <p>The collection of <a href="https://SpaDES.PredictiveEcology.org">SpaDES</a> modules in <a href="https://github.com/PredictiveEcology/spadesCBM.git">spadesCBM</a> was developed to enable R&amp;D input to the Canadian Forest Service (<a href="https://natural-resources.canada.ca/climate-change/climate-change-impacts-forests/carbon-budget-model">CFS</a>) forest carbon reporting system, <a href="https://natural-resources.canada.ca/climate-change/forest-carbon/canada-s-forest-carbon-reporting-system">NFCMARS</a>, the National Forest Carbon Monitoring, Accounting, and Reporting system. The CFS provides science backing for Canadian policies on national forest issues. <a href="https://github.com/PredictiveEcology/spadesCBM.git">spadesCBM</a> is a nimble tool in which new science, data and algorithms can be tested and explored to serve policy purposes. <a href="https://github.com/PredictiveEcology/spadesCBM.git">spadesCBM</a> development follows the <a href="https://predictiveecology.github.io/spadesCBM/lexicon.html#basic-structure-of-a-spades-project">PERFICT</a> approach of <span class="citation">McIntire <em>et al.</em> (<a href="references.html#ref-mcintire2022">2022</a>)</span> for ecological modelling systems, an approach that helps solve many of the complex issues in ecological modelling, supports continuous workflows, and nimble, enter operable modelling systems. The <a href="https://SpaDES.PredictiveEcology.org">SpaDES</a> platform is the toolkit that enables this implementation of the <a href="https://predictiveecology.github.io/spadesCBM/lexicon.html#basic-structure-of-a-spades-project">PERFICT</a> principle.</p>
 <p>In-depth information on the functioning, structure, and science behind <a href="https://github.com/PredictiveEcology/spadesCBM.git">spadesCBM</a> can be found in its <a href="https://predictiveecology.github.io/spadesCBM/#overview">manual</a>. Similar to this website, it is a living document that is continually updated as the model evolves.</p>
-<div id="usage-2" class="section level2 unnumbered">
-<h2>Usage<a class="anchor" aria-label="anchor" href="#usage-2"><i class="fas fa-link"></i></a>
-</h2>
-</div>
 <div id="modules-2" class="section level2 unnumbered">
 <h2>Modules<a class="anchor" aria-label="anchor" href="#modules-2"><i class="fas fa-link"></i></a>
 </h2>
+<p>A standard run of spadesCBM requires five modules to run. However, only three of those are required to run LandRCBM, as study area processing and biomass growth increments are dealt with on the LandR side of the model. Here is a brief introduction to the three spadesCBM modules required to run LandRCBM.</p>
 <div id="cbm_defaults" class="section level3 unnumbered">
 <h3>CBM_defaults<a class="anchor" aria-label="anchor" href="#cbm_defaults"><i class="fas fa-link"></i></a>
 </h3>
+<p>This <a href="https://predictiveecology.github.io/LandRCBM/lexicon.html#modules">module</a> provides R-based access to all defaults CBM parameters for the managed forests of Canada, akin to the Archive Index in the CBM-CFS3 documentation. Defaults for the managed forests of Canada include disturbance data such as different disturbance types and their IDs, spinup parameters, pool names, fire return intervals for each ecozone and more. By default, this module uses parameters that were created for use in <a href="https://natural-resources.canada.ca/climate-change/climate-change-impacts-forests/carbon-budget-model">CBM-CFS3</a> as described in <span class="citation">Kurz <em>et al.</em> (<a href="references.html#ref-kurz2009">2009</a>)</span>. More information on this module can be found in its <a href="https://predictiveecology.github.io/spadesCBM/cbm_defaults.html">manual chapter</a>.</p>
 </div>
 <div id="cbm_dataprep" class="section level3 unnumbered">
 <h3>CBM_dataPrep<a class="anchor" aria-label="anchor" href="#cbm_dataprep"><i class="fas fa-link"></i></a>
 </h3>
+<p>This <a href="https://predictiveecology.github.io/LandRCBM/lexicon.html#modules">module</a> processes spatially explicit inputs for use in <a href="https://github.com/PredictiveEcology/CBM_core">CBM_core</a>. It has several <a href="https://predictiveecology.github.io/LandRCBM/lexicon.html#events">events</a> each serving a specific data preparation task. These allow for study area spatial inputs to be processes into tables needed to run <a href="https://github.com/PredictiveEcology/CBM_core">CBM_core</a>, matches species and disturbance information to CBM-specific IDs, and reads in disturbance events for each simulation year. In-depth information on this module’s background and functioning can be found in its <a href="https://predictiveecology.github.io/spadesCBM/cbm_dataprep.html#cbm_dataprep">module chapter</a>.</p>
 </div>
 <div id="cbm_core" class="section level3 unnumbered">
 <h3>CBM_core<a class="anchor" aria-label="anchor" href="#cbm_core"><i class="fas fa-link"></i></a>
 </h3>
+<p>This is the central <a href="https://predictiveecology.github.io/LandRCBM/lexicon.html#modules">module</a> of <a href="https://github.com/PredictiveEcology/spadesCBM.git">spadesCBM</a>. This is where all the carbon transfers are calculated at every time step, where disturbances are applied, and stocks are tracked. This is the only module where Python functions are called. In this module the cohort and stand data is prepared and passed through a <a href="https://predictiveecology.github.io/spadesCBM/#the-spinup-function">spinup</a> function to initialize the carbon pools structure across the landscape. Disturbance and cohort data is then read it and prepared for carbon dynamics processing, where all carbon transfers are applied for each simulation year. This module also where <a href="https://github.com/PredictiveEcology/spadesCBM.git">spadesCBM</a> plots and saves its results. More information on how the module functions and the science behind how carbon transfers are performed and calculated can be found in its <a href="https://predictiveecology.github.io/spadesCBM/cbm_core.html">module chapter</a>.</p>
 
 </div>
 </div>
@@ -117,7 +117,6 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#spadescbm-overview">spadesCBM Overview</a></li>
-<li><a class="nav-link" href="#usage-2">Usage</a></li>
 <li>
 <a class="nav-link" href="#modules-2">Modules</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#cbm_defaults">CBM_defaults</a></li>
@@ -142,7 +141,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>LandRCBM Manual</strong>: v." was written by John Doe. It was last built on 2026-05-11.</p>
+    <p>"<strong>LandRCBM Manual</strong>: v." was written by John Doe. It was last built on 2026-05-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
