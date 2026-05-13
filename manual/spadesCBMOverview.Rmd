@@ -14,13 +14,17 @@ The collection of [SpaDES](https://SpaDES.PredictiveEcology.org) modules in [spa
 In-depth information on the functioning, structure, and science behind [spadesCBM](https://github.com/PredictiveEcology/spadesCBM.git) can be found in its  [manual](https://predictiveecology.github.io/spadesCBM/#overview). Similar to this website, it is a living document that is continually updated as the model evolves. 
 
 ## Modules {-}
+
 A standard run of spadesCBM requires five modules to run. However, only three of those are required to run LandRCBM, as study area processing and biomass growth increments are dealt with on the LandR side of the model. Here is a brief introduction to the three spadesCBM modules required to run LandRCBM. 
 
 ### CBM_defaults {-}
+
 This [module](https://predictiveecology.github.io/LandRCBM/lexicon.html#modules) provides R-based access to all defaults CBM parameters for the managed forests of Canada, akin to the Archive Index in the CBM-CFS3 documentation. Defaults for the managed forests of Canada include disturbance data such as different disturbance types and their IDs, spinup parameters, pool names, fire return intervals for each ecozone and more. By default, this module uses parameters that were created for use in [CBM-CFS3](https://natural-resources.canada.ca/climate-change/climate-change-impacts-forests/carbon-budget-model) as described in @kurz2009. More information on this module can be found in its [manual chapter](https://predictiveecology.github.io/spadesCBM/cbm_defaults.html). 
 
 ### CBM_dataPrep {-}
+
 This [module](https://predictiveecology.github.io/LandRCBM/lexicon.html#modules) processes spatially explicit inputs for use in [CBM_core](https://github.com/PredictiveEcology/CBM_core). It has several [events](https://predictiveecology.github.io/LandRCBM/lexicon.html#events) each serving a specific data preparation task. These allow for study area spatial inputs to be processes into tables needed to run [CBM_core](https://github.com/PredictiveEcology/CBM_core), matches species and disturbance information to CBM-specific IDs, and reads in disturbance events for each simulation year. In-depth information on this module's background and functioning can be found in its [module chapter](https://predictiveecology.github.io/spadesCBM/cbm_dataprep.html#cbm_dataprep). 
 
 ### CBM_core {-}
+
 This is the central [module](https://predictiveecology.github.io/LandRCBM/lexicon.html#modules) of [spadesCBM](https://github.com/PredictiveEcology/spadesCBM.git). This is where all the carbon transfers are calculated at every time step, where disturbances are applied, and stocks are tracked. This is the only module where Python functions are called. In this module the cohort and stand data is prepared and passed through a [spinup](https://predictiveecology.github.io/spadesCBM/#the-spinup-function) function to initialize the carbon pools structure across the landscape. Disturbance and cohort data is then read it and prepared for carbon dynamics processing, where all carbon transfers are applied for each simulation year. This module also where [spadesCBM](https://github.com/PredictiveEcology/spadesCBM.git) plots and saves its results. More information on how the module functions and the science behind how carbon transfers are performed and calculated can be found in its [module chapter](https://predictiveecology.github.io/spadesCBM/cbm_core.html).
