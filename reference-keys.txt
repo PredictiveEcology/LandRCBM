@@ -16,9 +16,14 @@ links-to-other-modules
 landrcbm_split3pools
 overview-2
 inputs-1
-parameters-1
 module-functioning-1
 events-2
-plotting
+init
+plotyc
+annualincrements
+annualdisturbances
+summarizeagbpools
+plotmaps
+plotsummaries
 outputs-1
 links-to-other-modules-1
