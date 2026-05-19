@@ -20,6 +20,9 @@ In its simplest form, a SpaDES module is comprised of R code that has metadata t
 ### Metadata {-}
 inputs and outputs are described in the metadata of the module. 
 
+### Parameters {-}
+Each module has its own set of parameters that a user can choose to set or leave as default. Parameters are usually module-specific, but some global parameters exist. To view an example of how parameters can be set in a global script, see the `params` section of the global found in our [example chapter](https://predictiveecology.github.io/LandRCBM/example.html). 
+
 ### Events {-}
 The functions of the module can be further subdivided into events. These events are scheduled in the module to be run one or many times. 
 
