@@ -21,7 +21,7 @@ This [module](https://predictiveecology.github.io/LandRCBM/lexicon.html#modules)
 
 ### Biomass_speciesFactorial {-}
 
-This [module](https://predictiveecology.github.io/LandRCBM/lexicon.html#modules) creates and runs a factorial experiment for LANDIS-II-like species traits used in [Biomass_speciesParametes](https://github.com/PredictiveEcology/Biomass_speciesParameters). While this module does not have a manual chapter, more information along with its code can be found in its [module repository](https://github.com/PredictiveEcology/Biomass_speciesFactorial).
+This [module](https://predictiveecology.github.io/LandRCBM/lexicon.html#modules) creates and runs a factorial experiment for LANDIS-II-like species traits used in [Biomass_speciesParameters](https://github.com/PredictiveEcology/Biomass_speciesParameters). While this module does not have a manual chapter, more information along with its code can be found in its [module repository](https://github.com/PredictiveEcology/Biomass_speciesFactorial).
 
 ### Biomass_speciesParameters {-}
 
