@@ -13,7 +13,7 @@ In-depth information on the functioning, structure, and science behind [LandR](h
 
 ## Modules {-}
 
-
+Several modules can be used to run LandR depending on the user's needs. For LandRCBM, five different modules are frequently used. Here is a brief description of each one.
 
 ### Biomass_borealDataPrep {-}
 
