@@ -17,7 +17,7 @@ link-citations: true
 
 # Example {-}
 
-Here we provide an example script to run a small area of managed forests British Columbia between 2000 and 2010. This example is relatively lightweight and most computers should be able to run the simulation. However, this does require a significant amount of storage space and will download several large files. Due to this as well as initial caching, the first time you run this script it will likely take a few hours, but re-running the script should only be minutes long. 
+Here we provide an example script to run a small area of managed forests British Columbia between 2020 and 2022. This example is relatively lightweight and most computers should be able to run the simulation. However, this does require a significant amount of storage space and will download several large files. Due to this as well as initial caching, the first time you run this script it will likely take a few hours, but re-running the script should only be minutes long. 
 
 If you have access to the computing power, larger areas and different scenarios can be found in scripts [here](https://github.com/PredictiveEcology/LandRCBM). Note that some of these require >100Gbs of RAM to run. 
 
