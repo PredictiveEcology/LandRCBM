@@ -46,3 +46,24 @@ Once we have run our `setupProject()` call, we can run our model using `simInitA
 
 ### Folder structure of a SpaDES module {-}
 Our spadesCBM modules use the basic folder structure for all SpaDES modules. Each have their respective `.R` scripts, an `.Rmd` file with their documentation used in this manual, and a `tests` folder containing the module's tests. Some will also have an `R` folder containing other scripts that get sourced when running the module. These can include basic functions used in the module or the creation of default objects only used when the user doesn't provide a specific input.
+
+## LandRCBM terms
+
+### Cohorts
+Cohorts represent trees on a pixel that share the same species and age. These are the smallest unit of forest representation in LandRCBM. 
+
+### Pixel groups and cohort groups
+Pixel groups are used in LandR and cohort groups are used in spadesCBM. A pixel group in LandR represents a collection of pixels that share the same cohort species and age composition within the same ecoregion. A cohort group is defined as cohorts share the same set of age, growth curve (or species), spatial unit, and ecozone across pixels (or stands). A single pixel can have many cohort groups. More information on the spadesCBM terminology can be found [here](https://predictiveecology.github.io/spadesCBM/lexicon.html#spadescbm-and-carbon-terms). An in-depth description of LandR pixel groups can be found in the highlited text here [here](https://landr-manual.predictiveecology.org/landr-biomass_core-module.html#init-inputs-params:~:text=Each,Hashing%29%2E). 
+
+### masterRaster
+In LandRCBM (as in LandR and spadesCBM), study area is defined by the `masterRaster` object. This object can be directly provided as a raster, created from a shapefile, or by any other means. For LandR, the `studyArea` object is also required. In our example, `masterRaster` is provided in our global script, refer to our [example chapter](https://predictiveecology.github.io/LandRCBM/example.html) to view how it the masterRaster is provided in our example.
+
+### spinup
+There are two different processes refered to as a spinup in LandR CBM. Biomass_core performs a spinup to initialize starting landscape conditions for Biomass_yieldTables whereas CBM_core performs a spinup to initialize and balance above and below-ground carbon pools. See figure 1 in the [Overview chapter](https://predictiveecology.github.io/LandRCBM/index.html) to see a basic visual of flow the modules involved in the LandR spinup. In-depth descriptions of the spadesCBM spinup can be found [here](https://predictiveecology.github.io/spadesCBM/index.html#the-spinup-function) and [here](https://predictiveecology.github.io/spadesCBM/cbm_core.html#events-1).
+
+### Ecozone, ecoregion/ecolocation, and spatial unit
+In Canada, there are 15 distinct terrestrial ecozones. These represent large ecosystems with specific climate and vegetation, regardless of jurisdiction. Spatial units (spadesCBM) are more specific than ecozones, and correspond to the unique combination of jurisdiction (i.e. province or territory) and ecozone. Ecoregions/ecolocations (LandR) are grouped by [National Ecological Classification of Canada (NECC) ecodistricts](https://open.canada.ca/data/en/dataset/fe9fd41c-1f67-4bc5-809d-05b62986b26b) and land-cover classification. 
+
+
+
+
