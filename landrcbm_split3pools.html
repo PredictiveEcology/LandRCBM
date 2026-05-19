@@ -13,7 +13,7 @@
 <meta name="twitter:title" content="Chapter 2 LandRCBM_split3pools | LandRCBM Manual">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.10.0/transition.js"></script><script src="libs/bs3compat-0.10.0/tabs.js"></script><script src="libs/bs3compat-0.10.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -184,9 +184,9 @@
 </tbody>
 </table></div>
 </div>
-<div id="parameters" class="section level2" number="2.3">
+<div id="parameters-1" class="section level2" number="2.3">
 <h2>
-<span class="header-section-number">2.3</span> Parameters<a class="anchor" aria-label="anchor" href="#parameters"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3</span> Parameters<a class="anchor" aria-label="anchor" href="#parameters-1"><i class="fas fa-link"></i></a>
 </h2>
 </div>
 <div id="module-functioning-1" class="section level2" number="2.4">
@@ -215,9 +215,9 @@
 <em>plotSummaries</em>: At the end of the simulation, plots the evolution of the above ground biomass of each pools for each species and for the entire landscape.</li>
 </ol>
 </div>
-<div id="plotting-1" class="section level3" number="2.4.2">
+<div id="plotting" class="section level3" number="2.4.2">
 <h3>
-<span class="header-section-number">2.4.2</span> Plotting<a class="anchor" aria-label="anchor" href="#plotting-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.4.2</span> Plotting<a class="anchor" aria-label="anchor" href="#plotting"><i class="fas fa-link"></i></a>
 </h3>
 <p>There are 3 types of plots that are created.</p>
 <p>First, the modules plots figures related to the yield tables. The module returns a figure for the yield curves of total above ground biomass for a number (controlled by the parameter <code>numPixGroupPlots</code>) yield table ids. For the same yield table ids, the module also plots the yield tables divided into above ground carbon pools and the resulting increments.</p>
@@ -292,8 +292,18 @@
 <h3>
 <span class="header-section-number">2.4.4</span> Links to other modules<a class="anchor" aria-label="anchor" href="#links-to-other-modules-1"><i class="fas fa-link"></i></a>
 </h3>
-<p>The module can be used as a standalone, but will be most likely used with other modules. The module from the <code>Biomass_*</code> family can provide most inputs needed by <code>LandRCBM_split3pools</code> and simulate vegetation dynamics. Disturbance modules like <code>fireSense</code> can be used to simulate disturbances. Finally, <code>CBM_core</code> can be used to simulate the carbon dynamics between the different carbon pools.</p>
-
+<ul>
+<li><a href="https://github.com/PredictiveEcology/CBM_defaults">CBM_defaults</a></li>
+<li><a href="https://github.com/PredictiveEcology/CBM_dataPrep">CBM_datPrep</a></li>
+<li><a href="https://github.com/PredictiveEcology/CBM_vol2biomass">CBM_vol2biomass</a></li>
+<li><a href="https://github.com/PredictiveEcology/CBM_core">CBM_core</a></li>
+<li><a href="https://github.com/PredictiveEcology/Biomass_borealDataPrep">Biomass_borealDataPrep</a></li>
+<li><a href="https://github.com/PredictiveEcology/Biomass_borealDataPrep">Biomass_speciesFactorial</a></li>
+<li><a href="https://github.com/PredictiveEcology/Biomass_speciesParameters">Biomass_speciesParameters</a></li>
+<li><a href="https://github.com/PredictiveEcology/LandRCBM_split3pools">LandRCBM_split3pools</a></li>
+<li><a href="https://github.com/PredictiveEcology/Biomass_regeneration">Biomass_regeneration</a></li>
+<li><a href="https://github.com/PredictiveEcology/Biomass_core">Biomass_core</a></li>
+</ul>
 </div>
 </div>
 </div>
@@ -306,11 +316,11 @@
 <li><a class="nav-link" href="#landrcbm_split3pools"><span class="header-section-number">2</span> LandRCBM_split3pools</a></li>
 <li><a class="nav-link" href="#overview-2"><span class="header-section-number">2.1</span> Overview</a></li>
 <li><a class="nav-link" href="#inputs-1"><span class="header-section-number">2.2</span> Inputs</a></li>
-<li><a class="nav-link" href="#parameters"><span class="header-section-number">2.3</span> Parameters</a></li>
+<li><a class="nav-link" href="#parameters-1"><span class="header-section-number">2.3</span> Parameters</a></li>
 <li>
 <a class="nav-link" href="#module-functioning-1"><span class="header-section-number">2.4</span> Module functioning</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#events-2"><span class="header-section-number">2.4.1</span> Events</a></li>
-<li><a class="nav-link" href="#plotting-1"><span class="header-section-number">2.4.2</span> Plotting</a></li>
+<li><a class="nav-link" href="#plotting"><span class="header-section-number">2.4.2</span> Plotting</a></li>
 <li><a class="nav-link" href="#outputs-1"><span class="header-section-number">2.4.3</span> Outputs</a></li>
 <li><a class="nav-link" href="#links-to-other-modules-1"><span class="header-section-number">2.4.4</span> Links to other modules</a></li>
 </ul>
@@ -332,7 +342,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>LandRCBM Manual</strong>: v." was written by John Doe. It was last built on 2026-05-13.</p>
+    <p>"<strong>LandRCBM Manual</strong>: v." was written by John Doe. It was last built on 2026-05-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

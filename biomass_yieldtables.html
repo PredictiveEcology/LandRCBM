@@ -13,7 +13,7 @@
 <meta name="twitter:title" content="Chapter 1 Biomass_yieldTables | LandRCBM Manual">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.10.0/transition.js"></script><script src="libs/bs3compat-0.10.0/tabs.js"></script><script src="libs/bs3compat-0.10.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -42,9 +42,9 @@
     }
   </style>
 <link rel="stylesheet" href="css/style.css">
-<meta name="description" content="This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us here.  1.1 Overview The objective of this module is...">
-<meta property="og:description" content="This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us here.  1.1 Overview The objective of this module is...">
-<meta name="twitter:description" content="This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us here.  1.1 Overview The objective of this module is...">
+<meta name="description" content="This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us here.  1.1 Overview Biomass_yieldTables produces the...">
+<meta property="og:description" content="This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us here.  1.1 Overview Biomass_yieldTables produces the...">
+<meta name="twitter:description" content="This documentation is work in progress. Potential discrepancies and omissions may exist for the time being. If you find any, please contact us here.  1.1 Overview Biomass_yieldTables produces the...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -93,13 +93,13 @@
 <h2>
 <span class="header-section-number">1.1</span> Overview<a class="anchor" aria-label="anchor" href="#overview-1"><i class="fas fa-link"></i></a>
 </h2>
-<p>The objective of this module is to produce yield curves for a user-specified study area from <code>LandR</code> simulations. To do so, the module initialize the landscape keeping species composition, but setting all biomass to 1 and ages 0. The module <code>Biomass_core</code> is then run internally without dispersal and disturbances to simulate vegetation dynamics from year 0 until all species dies out (i.e., maximum longevity among all species). The module records the above ground biomass of each species, in each pixel, at each time step to build yield tables that take into account species traits and competition.</p>
+<p><a href="https://github.com/PredictiveEcology/Biomass_yieldTables">Biomass_yieldTables</a> produces the biomass yield curves for cohorts on a user-specified study area from <a href="https://landr-manual.predictiveecology.org/">LandR</a> simulations for use as increments to simulate carbon dynamics in <a href="https://github.com/PredictiveEcology/spadesCBM.git">spadesCBM</a>. The <a href="https://predictiveecology.github.io/LandRCBM/lexicon.html#modules">module</a> initialize the landscape keeping species composition, but setting all biomass to 1 and ages 0. The module <code>Biomass_core</code> is then run internally without dispersal and disturbances to simulate vegetation dynamics from year 0 until all species dies out (i.e., maximum longevity among all species). The module records the above ground biomass of each species, in each pixel, at each time step to build yield tables that take into account species traits and competition.</p>
 </div>
 <div id="inputs" class="section level2" number="1.2">
 <h2>
 <span class="header-section-number">1.2</span> Inputs<a class="anchor" aria-label="anchor" href="#inputs"><i class="fas fa-link"></i></a>
 </h2>
-<p>The module has the same inputs as <code>Biomass_core</code>. For now, there are no defaults for the inputs, and the user either need to provide all the inputs needed or use the module with other modules that would prepare the inputs (e.g., <code>Biomass_borealDataPrep</code>).</p>
+<p>For now, there are no defaults for the inputs, and the user either need to provide all the inputs themselves or run the module alognside other modules that can generate the expected inputs (e.g., <code>Biomass_borealDataPrep</code>).</p>
 <div class="inline-table"><table class="table table-sm">
 <colgroup>
 <col width="21%">
@@ -143,25 +143,11 @@
 <h3>
 <span class="header-section-number">1.3.1</span> Events<a class="anchor" aria-label="anchor" href="#events-1"><i class="fas fa-link"></i></a>
 </h3>
-<p>Everything that the module does is in the <code>init</code> event:</p>
-<ol style="list-style-type: decimal">
-<li>The module initializes the landscape keeping the species present in each pixel, and setting all species ages to 0 and biomass to 1.</li>
-<li>New pixel groups are created for pixels that shares the same species composition and ecoregion, these pixel groups will becomre the <code>yieldTableIndex</code>.</li>
-<li>Vegetation dynamics is simulated by running <code>Biomass_core</code> internally. The object <code>cohortData</code> is saved each year.</li>
-<li>The <code>cohortData</code> files saved in step 2 are loaded and combined to create the yield tables.</li>
-<li>The module plots the resulting <code>yieldTables</code>.</li>
-</ol>
+<p>This <a href="https://predictiveecology.github.io/LandRCBM/lexicon.html#modules">module</a> only has a single <a href="https://predictiveecology.github.io/LandRCBM/lexicon.html#events">event</a>, the <code>init</code> event. Here the module initializes the landscape, keeping appropriate species present in each pixel and setting all ages 0 and biomass to 1. New pixel groups are then created for pixels that share the same species composition and ecoregion, these groups will then become the <code>yieldTableIndex</code>. Vegetation dynamics are simulated by running <code>Biomass_core</code> internally and the <code>cohortData</code> object is saved each year. <code>cohortData</code> objects for each year are then loaded and combined to create the yield tables, which are plotted and saved in the <code>ouputs</code> folder.</p>
 </div>
-<div id="plotting" class="section level3" number="1.3.2">
+<div id="outputs" class="section level3" number="1.3.2">
 <h3>
-<span class="header-section-number">1.3.2</span> Plotting<a class="anchor" aria-label="anchor" href="#plotting"><i class="fas fa-link"></i></a>
-</h3>
-<p>By default, the module plots the yield table for 40 set of growth curves (a set of growth curve being the growth of all species coexisting in a given pixel, named <code>yieldTableIndex</code>). The number of set of growth curves can be changed with the parameter <code>numPlots</code>.</p>
-<p>The module also plots the maps the <code>yieldTableIndex</code>. Each forested pixel has a <code>yieldTableIndex</code> referencing the set of growth curve for this pixel.</p>
-</div>
-<div id="outputs" class="section level3" number="1.3.3">
-<h3>
-<span class="header-section-number">1.3.3</span> Outputs<a class="anchor" aria-label="anchor" href="#outputs"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.3.2</span> Outputs<a class="anchor" aria-label="anchor" href="#outputs"><i class="fas fa-link"></i></a>
 </h3>
 <div class="inline-table"><table class="table table-sm">
 <colgroup>
@@ -188,19 +174,116 @@
 </tbody>
 </table></div>
 </div>
+<div id="usage-1" class="section level3" number="1.3.3">
+<h3>
+<span class="header-section-number">1.3.3</span> Usage<a class="anchor" aria-label="anchor" href="#usage-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Here is an example of a workflow to build yield tables for the RIA study area (Northeast British-Columbia). Note that you will need data permissions for permanent sample plot and inventory data to run this global. If you have permissions, be sure to sign into the appropriate Google account. Note that this global requires some large files and an initial run will take some time to download them.</p>
+<pre><code>repos &lt;- c("predictiveecology.r-universe.dev", getOption("repos"))
+if (!require("SpaDES.project")){
+  Require::Install(c("SpaDES.project", "SpaDES.core", "reproducible"), repos = repos, dependencies = TRUE)
+}
+
+getRIA &lt;- function(x) {
+  x &lt;- sf::st_read(x) 
+  ria &lt;- x[x$TSA_NUMBER %in% c('08', '16', '24', '40', '41'),]
+  ria &lt;- sf::st_union(ria)|&gt; sf::st_as_sf()
+  return(ria)
+}
+
+out &lt;- SpaDES.project::setupProject(
+  paths = list(projectPath = getwd(),
+               inputPath = "~/inputs",
+               outputPath = "outputs/yieldTables",
+               cachePath = "cache"),
+  options = options(spades.moduleCodeChecks = FALSE,
+                    spades.recoveryMode = FALSE),
+  times = list(start = 2020, end = 2020),
+  modules = c("PredictiveEcology/Biomass_speciesFactorial@development",
+              "PredictiveEcology/Biomass_borealDataPrep@development",
+              "PredictiveEcology/Biomass_speciesParameters@development",
+              "PredictiveEcology/Biomass_yieldTables@main"
+  ),
+  params = list(
+    .globals = list(
+      .plots = c("png"),
+      .plotInterval = 10,
+      sppEquivCol = 'LandR',
+      .studyAreaName = "RIAsmall"
+    ),
+    Biomass_borealDataPrep = list(
+      .studyAreaName = "RIA",
+      subsetDataBiomassModel = 50
+    ),
+    Biomass_speciesFactorial = list(
+      .plots = NULL, #"pdf",
+      runExperiment = TRUE,
+      factorialSize = "medium"
+    ),
+    Biomass_speciesParameters = list(
+      .plots = "png",
+      standAgesForFitting = c(0, 110),
+      .useCache = c(".inputObjects", "init"),
+      speciesFittingApproach = "focal"
+    ),
+    Biomass_yieldTables = list(
+      moduleNameAndBranch = "PredictiveEcology/Biomass_core@development",
+      maxAge = 150,
+      .plots = "png",
+      .useCache = "generateData"
+    )
+  ),
+  packages = c("googledrive", 'RCurl', 'XML', "stars"),
+  useGit = F,
+  functions = getRIA,
+  # Study area is within RIA (RIA buffered 150km inward)
+  studyArea = {
+    reproducible::prepInputs(
+      url = "https://drive.google.com/file/d/1LxacDOobTrRUppamkGgVAUFIxNT4iiHU/view?usp=sharing",
+      destinationPath = "inputs",
+      fun = getRIA,
+      overwrite = TRUE
+    ) |&gt; sf::st_buffer(dist = -150000)
+  },
+  studyAreaLarge = studyArea,
+  rasterToMatch = {
+    sa &lt;- terra::vect(studyArea)
+    targetCRS &lt;- terra::crs(sa)
+    rtm &lt;- terra::rast(sa, res = c(250, 250), crs = targetCRS)
+    rtm[] &lt;- 1
+    rtm &lt;- terra::mask(rtm, sa)
+    rtm
+  },
+  sppEquiv = {
+    speciesInStudy &lt;- LandR::speciesInStudyArea(studyAreaLarge,
+                                                dPath = "inputs")
+    species &lt;- LandR::equivalentName(speciesInStudy$speciesList, df = LandR::sppEquivalencies_CA, "LandR")
+    sppEquiv &lt;- LandR::sppEquivalencies_CA[LandR %in% species]
+    sppEquiv &lt;- sppEquiv[KNN != "" &amp; LANDIS_traits != ""] #avoid a bug with shore pine
+  }
+)
+
+out$loadOrder &lt;- unlist(out$modules)
+
+initOut &lt;- SpaDES.core::simInit2(out)
+simOut &lt;- SpaDES.core::spades(initOut)</code></pre>
+</div>
 <div id="links-to-other-modules" class="section level3" number="1.3.4">
 <h3>
 <span class="header-section-number">1.3.4</span> Links to other modules<a class="anchor" aria-label="anchor" href="#links-to-other-modules"><i class="fas fa-link"></i></a>
 </h3>
-<p>Since there are no default inputs for <code>Biomass_yieldTables</code>, it will most likely always be run with <code>Biomass_borealDataPrep</code> or another module that prepares the data to run <code>Biomass_core</code>. Using <code>Biomass_yieldTables</code> with <code>Biomass_borealDataPrep</code> would generate yield tables using the default <code>LandR</code> species traits, which often underestimate species coexistence. Using the module <code>Biomass_speciesParameters</code> and <code>Biomass_speciesFactorial</code> to calibrate species traits with permanent sample plots will help generate that capture more realistically competition.</p>
-<p>The yield tables created by this module as inputs for module that need growth curves. For example, we can use the yield tables to simulate cohort growth like <code>spadesCBM</code>.</p>
-</div>
-<div id="usage-1" class="section level3" number="1.3.5">
-<h3>
-<span class="header-section-number">1.3.5</span> Usage<a class="anchor" aria-label="anchor" href="#usage-1"><i class="fas fa-link"></i></a>
-</h3>
-<p>An example of a workflow to build yield tables for the RIA study area (Northeast British-Columbia) can be found in the script <code>global_LandRyieldTables.R</code> of the repository <a href="https://github.com/DominiqueCaron/LandRCBM">LandRCBM</a>.</p>
-
+<ul>
+<li><a href="https://github.com/PredictiveEcology/CBM_defaults">CBM_defaults</a></li>
+<li><a href="https://github.com/PredictiveEcology/CBM_dataPrep">CBM_datPrep</a></li>
+<li><a href="https://github.com/PredictiveEcology/CBM_vol2biomass">CBM_vol2biomass</a></li>
+<li><a href="https://github.com/PredictiveEcology/CBM_core">CBM_core</a></li>
+<li><a href="https://github.com/PredictiveEcology/Biomass_borealDataPrep">Biomass_borealDataPrep</a></li>
+<li><a href="https://github.com/PredictiveEcology/Biomass_borealDataPrep">Biomass_speciesFactorial</a></li>
+<li><a href="https://github.com/PredictiveEcology/Biomass_speciesParameters">Biomass_speciesParameters</a></li>
+<li><a href="https://github.com/PredictiveEcology/LandRCBM_split3pools">LandRCBM_split3pools</a></li>
+<li><a href="https://github.com/PredictiveEcology/Biomass_regeneration">Biomass_regeneration</a></li>
+<li><a href="https://github.com/PredictiveEcology/Biomass_core">Biomass_core</a></li>
+</ul>
 </div>
 </div>
 </div>
@@ -216,10 +299,9 @@
 <li>
 <a class="nav-link" href="#module-functioning"><span class="header-section-number">1.3</span> Module functioning</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#events-1"><span class="header-section-number">1.3.1</span> Events</a></li>
-<li><a class="nav-link" href="#plotting"><span class="header-section-number">1.3.2</span> Plotting</a></li>
-<li><a class="nav-link" href="#outputs"><span class="header-section-number">1.3.3</span> Outputs</a></li>
+<li><a class="nav-link" href="#outputs"><span class="header-section-number">1.3.2</span> Outputs</a></li>
+<li><a class="nav-link" href="#usage-1"><span class="header-section-number">1.3.3</span> Usage</a></li>
 <li><a class="nav-link" href="#links-to-other-modules"><span class="header-section-number">1.3.4</span> Links to other modules</a></li>
-<li><a class="nav-link" href="#usage-1"><span class="header-section-number">1.3.5</span> Usage</a></li>
 </ul>
 </li>
 </ul>
@@ -239,7 +321,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>LandRCBM Manual</strong>: v." was written by John Doe. It was last built on 2026-05-13.</p>
+    <p>"<strong>LandRCBM Manual</strong>: v." was written by John Doe. It was last built on 2026-05-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

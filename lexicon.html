@@ -13,7 +13,7 @@
 <meta name="twitter:title" content="Lexicon | LandRCBM Manual">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.10.0/transition.js"></script><script src="libs/bs3compat-0.10.0/tabs.js"></script><script src="libs/bs3compat-0.10.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -101,6 +101,11 @@ Using modules allows us to break up a model’s code into meaningful themes and/
 </h3>
 <p>inputs and outputs are described in the metadata of the module.</p>
 </div>
+<div id="parameters" class="section level3 unnumbered">
+<h3>Parameters<a class="anchor" aria-label="anchor" href="#parameters"><i class="fas fa-link"></i></a>
+</h3>
+<p>Each module has its own set of parameters that a user can choose to set or leave as default. Parameters are usually module-specific, but some global parameters exist. To view an example of how parameters can be set in a global script, see the <code>params</code> section of the global found in our <a href="https://predictiveecology.github.io/LandRCBM/example.html">example chapter</a>.</p>
+</div>
 <div id="events" class="section level3 unnumbered">
 <h3>Events<a class="anchor" aria-label="anchor" href="#events"><i class="fas fa-link"></i></a>
 </h3>
@@ -143,6 +148,41 @@ to learn more about the <code>SpaDES.project</code> package and <code>setupProje
 <h3>Folder structure of a SpaDES module<a class="anchor" aria-label="anchor" href="#folder-structure-of-a-spades-module"><i class="fas fa-link"></i></a>
 </h3>
 <p>Our spadesCBM modules use the basic folder structure for all SpaDES modules. Each have their respective <code>.R</code> scripts, an <code>.Rmd</code> file with their documentation used in this manual, and a <code>tests</code> folder containing the module’s tests. Some will also have an <code>R</code> folder containing other scripts that get sourced when running the module. These can include basic functions used in the module or the creation of default objects only used when the user doesn’t provide a specific input.</p>
+</div>
+</div>
+<div id="landrcbm-terms" class="section level2" number="0.1">
+<h2>
+<span class="header-section-number">0.1</span> LandRCBM terms<a class="anchor" aria-label="anchor" href="#landrcbm-terms"><i class="fas fa-link"></i></a>
+</h2>
+<div id="cohorts" class="section level3" number="0.1.1">
+<h3>
+<span class="header-section-number">0.1.1</span> Cohorts<a class="anchor" aria-label="anchor" href="#cohorts"><i class="fas fa-link"></i></a>
+</h3>
+<p>Cohorts represent trees on a pixel that share the same species and age. These are the smallest unit of forest representation in LandRCBM.</p>
+</div>
+<div id="pixel-groups-and-cohort-groups" class="section level3" number="0.1.2">
+<h3>
+<span class="header-section-number">0.1.2</span> Pixel groups and cohort groups<a class="anchor" aria-label="anchor" href="#pixel-groups-and-cohort-groups"><i class="fas fa-link"></i></a>
+</h3>
+<p>Pixel groups are used in LandR and cohort groups are used in spadesCBM. A pixel group in LandR represents a collection of pixels that share the same cohort species and age composition within the same ecoregion. A cohort group is defined as cohorts share the same set of age, growth curve (or species), spatial unit, and ecozone across pixels (or stands). A single pixel can have many cohort groups. More information on the spadesCBM terminology can be found <a href="https://predictiveecology.github.io/spadesCBM/lexicon.html#spadescbm-and-carbon-terms">here</a>. An in-depth description of LandR pixel groups can be found in the highlited text here <a href="https://landr-manual.predictiveecology.org/landr-biomass_core-module.html#init-inputs-params:~:text=Each,Hashing%29%2E">here</a>.</p>
+</div>
+<div id="masterraster" class="section level3" number="0.1.3">
+<h3>
+<span class="header-section-number">0.1.3</span> masterRaster<a class="anchor" aria-label="anchor" href="#masterraster"><i class="fas fa-link"></i></a>
+</h3>
+<p>In LandRCBM (as in LandR and spadesCBM), study area is defined by the <code>masterRaster</code> object. This object can be directly provided as a raster, created from a shapefile, or by any other means. For LandR, the <code>studyArea</code> object is also required. In our example, <code>masterRaster</code> is provided in our global script, refer to our <a href="https://predictiveecology.github.io/LandRCBM/example.html">example chapter</a> to view how it the masterRaster is provided in our example.</p>
+</div>
+<div id="spinup" class="section level3" number="0.1.4">
+<h3>
+<span class="header-section-number">0.1.4</span> spinup<a class="anchor" aria-label="anchor" href="#spinup"><i class="fas fa-link"></i></a>
+</h3>
+<p>There are two different processes refered to as a spinup in LandR CBM. Biomass_core performs a spinup to initialize starting landscape conditions for Biomass_yieldTables whereas CBM_core performs a spinup to initialize and balance above and below-ground carbon pools. See figure 1 in the <a href="https://predictiveecology.github.io/LandRCBM/index.html">Overview chapter</a> to see a basic visual of flow the modules involved in the LandR spinup. In-depth descriptions of the spadesCBM spinup can be found <a href="https://predictiveecology.github.io/spadesCBM/index.html#the-spinup-function">here</a> and <a href="https://predictiveecology.github.io/spadesCBM/cbm_core.html#events-1">here</a>.</p>
+</div>
+<div id="ecozone-ecoregionecolocation-and-spatial-unit" class="section level3" number="0.1.5">
+<h3>
+<span class="header-section-number">0.1.5</span> Ecozone, ecoregion/ecolocation, and spatial unit<a class="anchor" aria-label="anchor" href="#ecozone-ecoregionecolocation-and-spatial-unit"><i class="fas fa-link"></i></a>
+</h3>
+<p>In Canada, there are 15 distinct terrestrial ecozones. These represent large ecosystems with specific climate and vegetation, regardless of jurisdiction. Spatial units (spadesCBM) are more specific than ecozones, and correspond to the unique combination of jurisdiction (i.e. province or territory) and ecozone. Ecoregions/ecolocations (LandR) are grouped by <a href="https://open.canada.ca/data/en/dataset/fe9fd41c-1f67-4bc5-809d-05b62986b26b">National Ecological Classification of Canada (NECC) ecodistricts</a> and land-cover classification.</p>
 
 </div>
 </div>
@@ -158,6 +198,7 @@ to learn more about the <code>SpaDES.project</code> package and <code>setupProje
 <a class="nav-link" href="#basic-structure-of-a-spades-project">Basic structure of a SpaDES project</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#modules">Modules</a></li>
 <li><a class="nav-link" href="#metadata">Metadata</a></li>
+<li><a class="nav-link" href="#parameters">Parameters</a></li>
 <li><a class="nav-link" href="#events">Events</a></li>
 <li><a class="nav-link" href="#inputobjects">.inputObjects()</a></li>
 <li><a class="nav-link" href="#simlist">Simlist</a></li>
@@ -169,6 +210,15 @@ to learn more about the <code>SpaDES.project</code> package and <code>setupProje
 <li><a class="nav-link" href="#the-setupproject-function">The setupProject() function</a></li>
 <li><a class="nav-link" href="#the-siminitandspades2-function">The simInitAndSpades2() function</a></li>
 <li><a class="nav-link" href="#folder-structure-of-a-spades-module">Folder structure of a SpaDES module</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#landrcbm-terms"><span class="header-section-number">0.1</span> LandRCBM terms</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#cohorts"><span class="header-section-number">0.1.1</span> Cohorts</a></li>
+<li><a class="nav-link" href="#pixel-groups-and-cohort-groups"><span class="header-section-number">0.1.2</span> Pixel groups and cohort groups</a></li>
+<li><a class="nav-link" href="#masterraster"><span class="header-section-number">0.1.3</span> masterRaster</a></li>
+<li><a class="nav-link" href="#spinup"><span class="header-section-number">0.1.4</span> spinup</a></li>
+<li><a class="nav-link" href="#ecozone-ecoregionecolocation-and-spatial-unit"><span class="header-section-number">0.1.5</span> Ecozone, ecoregion/ecolocation, and spatial unit</a></li>
 </ul>
 </li>
 </ul>
@@ -188,7 +238,7 @@ to learn more about the <code>SpaDES.project</code> package and <code>setupProje
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>LandRCBM Manual</strong>: v." was written by John Doe. It was last built on 2026-05-13.</p>
+    <p>"<strong>LandRCBM Manual</strong>: v." was written by John Doe. It was last built on 2026-05-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

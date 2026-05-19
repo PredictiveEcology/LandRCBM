@@ -13,7 +13,7 @@
 <meta name="twitter:title" content="Example | LandRCBM Manual">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.10.0/transition.js"></script><script src="libs/bs3compat-0.10.0/tabs.js"></script><script src="libs/bs3compat-0.10.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.11.0/transition.js"></script><script src="libs/bs3compat-0.11.0/tabs.js"></script><script src="libs/bs3compat-0.11.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -42,9 +42,9 @@
     }
   </style>
 <link rel="stylesheet" href="css/style.css">
-<meta name="description" content="Here we provide an example script to run a small area of managed forests British Columbia between 2000 and 2010. This example is relatively lightweight and most computers should be able to run the...">
-<meta property="og:description" content="Here we provide an example script to run a small area of managed forests British Columbia between 2000 and 2010. This example is relatively lightweight and most computers should be able to run the...">
-<meta name="twitter:description" content="Here we provide an example script to run a small area of managed forests British Columbia between 2000 and 2010. This example is relatively lightweight and most computers should be able to run the...">
+<meta name="description" content="Here we provide an example script to run a small area of managed forests British Columbia between 2020 and 2022. This example is relatively lightweight and most computers should be able to run the...">
+<meta property="og:description" content="Here we provide an example script to run a small area of managed forests British Columbia between 2020 and 2022. This example is relatively lightweight and most computers should be able to run the...">
+<meta name="twitter:description" content="Here we provide an example script to run a small area of managed forests British Columbia between 2020 and 2022. This example is relatively lightweight and most computers should be able to run the...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -85,7 +85,7 @@
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="example" class="section level1 unnumbered">
 <h1>Example<a class="anchor" aria-label="anchor" href="#example"><i class="fas fa-link"></i></a>
 </h1>
-<p>Here we provide an example script to run a small area of managed forests British Columbia between 2000 and 2010. This example is relatively lightweight and most computers should be able to run the simulation. However, this does require a significant amount of storage space and will download several large files. Due to this as well as initial caching, the first time you run this script it will likely take a few hours, but re-running the script should only be minutes long.</p>
+<p>Here we provide an example script to run a small area of managed forests British Columbia between 2020 and 2022. This example is relatively lightweight and most computers should be able to run the simulation. However, this does require a significant amount of storage space and will download several large files. Due to this as well as initial caching, the first time you run this script it will likely take a few hours, but re-running the script should only be minutes long.</p>
 <p>If you have access to the computing power, larger areas and different scenarios can be found in scripts <a href="https://github.com/PredictiveEcology/LandRCBM">here</a>. Note that some of these require &gt;100Gbs of RAM to run.</p>
 <div id="setup" class="section level2 unnumbered">
 <h2>Setup<a class="anchor" aria-label="anchor" href="#setup"><i class="fas fa-link"></i></a>
@@ -112,6 +112,112 @@ The <a href="https://rstudio.github.io/reticulate/"><code>reticulate</code></a> 
 <div id="running-the-simulation" class="section level2 unnumbered">
 <h2>Running the simulation<a class="anchor" aria-label="anchor" href="#running-the-simulation"><i class="fas fa-link"></i></a>
 </h2>
+<p>Here is the R script for a LandRCBM simulation of a small area in British Columbia between 2020 and 2022 with no simulated disturbance. Note that you will need access to permanent sample plot and inventory data to run this global as they are not currently publicly available.</p>
+<pre><code>projectPath &lt;- "~/LandRCBM"
+repos &lt;- c("predictiveecology.r-universe.dev", getOption("repos"))
+if (!require("SpaDES.project")){
+  Require::Install(c("SpaDES.project"), repos = repos, dependencies = TRUE)
+}
+
+getRIA &lt;- function(x) {
+  x &lt;- sf::st_read(x) 
+  ria &lt;- x[x$TSA_NUMBER %in% c('08', '16', '24', '40', '41'),]
+  ria &lt;- sf::st_union(ria)|&gt; sf::st_as_sf()
+  return(ria)
+}
+
+out &lt;- SpaDES.project::setupProject(
+  overwrite = FALSE,
+  paths = list(projectPath = projectPath,
+               outputPath  = file.path(projectPath, "outputs", "tinyRIA"),
+               modulePath  = file.path(projectPath, "modules"),
+               packagePath = file.path(projectPath, "packages"),
+               inputPath   = file.path(projectPath, "inputs"),
+               cachePath   = file.path(projectPath, "cache")),
+  options = options(
+    repos = c(repos = repos),
+    Require.cloneFrom = Sys.getenv("R_LIBS_USER"),
+    spades.moduleCodeChecks = FALSE,
+    spades.recoveryMode = FALSE,
+    reproducible.useMemoise = TRUE),
+  times = list(start = 2020, end = 2022),
+  modules = c(
+    "PredictiveEcology/Biomass_speciesFactorial@development",
+    "PredictiveEcology/Biomass_borealDataPrep@development",
+    "PredictiveEcology/Biomass_speciesParameters@development",
+    "PredictiveEcology/CBM_defaults@main",
+    "PredictiveEcology/Biomass_yieldTables@main",
+    "PredictiveEcology/Biomass_core@main",
+    "PredictiveEcology/CBM_dataPrep@main",
+    "PredictiveEcology/LandRCBM_split3pools@main",
+    "PredictiveEcology/CBM_core@main"
+  ),
+  packages = c("googledrive", 'RCurl', 'XML', "stars", "httr2", "terra"),
+  studyArea = {
+    reproducible::prepInputs(
+      url = "https://drive.google.com/file/d/1LxacDOobTrRUppamkGgVAUFIxNT4iiHU/view?usp=sharing",
+      destinationPath = "~/inputs",
+      fun = getRIA,
+      overwrite = TRUE
+    ) |&gt; sf::st_crop(c(xmin = 1000000, xmax = 1200000, ymin = 1100000, ymax = 1300000))
+  },
+  studyArea_biomassParam = studyArea,
+  rasterToMatch = {
+    sa &lt;- terra::vect(studyArea)
+    targetCRS &lt;- terra::crs(sa)
+    rtm &lt;- terra::rast(sa, res = c(250, 250))
+    terra::crs(rtm) &lt;- targetCRS
+    rtm[] &lt;- 1
+    rtm &lt;- terra::mask(rtm, sa)
+    rtm
+  },
+  masterRaster = {
+    masterRaster = rasterToMatch
+    masterRaster
+  },
+  rasterToMatch_biomassParam = masterRaster, 
+  sppEquiv = {
+    speciesInStudy &lt;- LandR::speciesInStudyArea(studyArea,
+                                                dPath = "~/inputs")
+    species &lt;- LandR::equivalentName(speciesInStudy$speciesList, df = LandR::sppEquivalencies_CA, "LandR")
+    sppEquiv &lt;- LandR::sppEquivalencies_CA[LandR %in% species]
+    sppEquiv &lt;- sppEquiv[KNN != "" &amp; LANDIS_traits != ""] #avoid a bug with shore pine
+  },
+  params = list(
+    .globals = list(
+      dataYear = 2020,
+      .plots = c("png"),
+      .plotInterval = 10,
+      sppEquivCol = 'LandR',
+      .studyAreaName = "RIA"
+    ),
+    Biomass_core = list(.plots = NA),
+    Biomass_borealDataPrep = list(
+      .studyAreaName = "RIA",
+      subsetDataBiomassModel = 50
+    ),
+    Biomass_yieldTables = list(
+      moduleNameAndBranch = "PredictiveEcology/Biomass_core@development",
+      maxAge = 200,
+      .plots = "png",
+      .useCache = "generateData"
+    ),
+    Biomass_speciesParameters = list(
+      .plots = "png",
+      standAgesForFitting = c(0, 110),
+      .useCache = c(".inputObjects", "init"),
+      speciesFittingApproach = "focal"
+    ),
+    CBM_core = list(
+      skipPrepareCBMvars = TRUE
+    )
+  )
+)
+
+out$loadOrder &lt;- unlist(out$modules)
+
+initOut &lt;- SpaDES.core::simInit2(out)
+simOut &lt;- SpaDES.core::spades(initOut)</code></pre>
 
 </div>
 </div>
@@ -146,7 +252,7 @@ The <a href="https://rstudio.github.io/reticulate/"><code>reticulate</code></a> 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>LandRCBM Manual</strong>: v." was written by John Doe. It was last built on 2026-05-13.</p>
+    <p>"<strong>LandRCBM Manual</strong>: v." was written by John Doe. It was last built on 2026-05-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
