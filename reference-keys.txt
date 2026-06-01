@@ -18,11 +18,12 @@ overview-2
 inputs-1
 module-functioning-1
 events-2
-init
-plotyc
+splitinit
+postspinupadjustbiomass
 annualincrements
-annualdisturbances
+preparecbmvars
 summarizeagbpools
+plotyc
 plotmaps
 plotsummaries
 outputs-1
