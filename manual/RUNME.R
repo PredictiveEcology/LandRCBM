@@ -19,6 +19,7 @@ docsDir <- file.path(manDir, "_bookdown.yml") |>
 # load packages -------------------------------------
 
 library(bibtex)
+install.packages("bookdown")
 library(bookdown)
 library(data.table)
 library(knitr)
