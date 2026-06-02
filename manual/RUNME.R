@@ -1,6 +1,8 @@
 
 ## this manual must be knitted by running this script
 install.packages(c("libuv", "fs"))
+library(libuv)
+library(fs)
 prjDir <- rprojroot::find_root(rprojroot::is_rstudio_project | rprojroot::is_git_root | rprojroot::from_wd, path = getwd())
 manDir <- file.path(prjDir, "manual")
 
