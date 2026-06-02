@@ -242,9 +242,41 @@
 <p>This simple plotting event plots the evolution of the aboveground biomass of each pool for each species and for the entire landscape at the end of the simulation.</p>
 </div>
 </div>
-<div id="outputs-1" class="section level3" number="2.3.2">
+<div id="estimating-merchantable-proportion-of-stemwood" class="section level3" number="2.3.2">
 <h3>
-<span class="header-section-number">2.3.2</span> Outputs<a class="anchor" aria-label="anchor" href="#outputs-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3.2</span> Estimating merchantable proportion of stemwood<a class="anchor" aria-label="anchor" href="#estimating-merchantable-proportion-of-stemwood"><i class="fas fa-link"></i></a>
+</h3>
+<p>Merchantable wood is estimated in <span class="citation">Boudewyn <em>et al.</em> (<a href="references.html#ref-boudewyn2007">2007</a>)</span> with the following equation:
+<span class="math inline">\(nonmerchfactor = k + a * b_m^b\)</span>
+<span class="math inline">\(nonmerchfactor = b_{nm}/b_m\)</span>
+<span class="math inline">\(b_{nm} = b_m + b_n\)</span></p>
+<p>Where:</p>
+<ul>
+<li><p><span class="math inline">\(b_n\)</span> is the stemwood biomass of live, nonmerchantable trees</p></li>
+<li><p><span class="math inline">\(b_m\)</span> is the stemwood biomass of merchantable sized live trees</p></li>
+<li><p><span class="math inline">\(b_{nm}\)</span> is the total stemwood biomass in live trees</p></li>
+<li><p><span class="math inline">\(k\)</span>, <span class="math inline">\(a\)</span>, and <span class="math inline">\(b\)</span> are model parameters fit separately by jurisdiction, ecozone, and lead tree species (Table 4 in <span class="citation">Boudewyn <em>et al.</em> (<a href="references.html#ref-boudewyn2007">2007</a>)</span>).</p></li>
+</ul>
+<p>Because it is not possible to analytically infer new parameters for the equation above, they had to be inferred through simulations resulting in a new exponential model with this form to estimate the mechantable proportion of stemwood:</p>
+<p><span class="math inline">\(b_m = k - e^{-a(b_{nm} - b)}\)</span></p>
+<p>Where:</p>
+<ul>
+<li>
+<span class="math inline">\(k\)</span>, <span class="math inline">\(a\)</span>, and <span class="math inline">\(b\)</span> are model parameters inferred separately from those in <span class="citation">Boudewyn <em>et al.</em> (<a href="references.html#ref-boudewyn2007">2007</a>)</span>
+</li>
+</ul>
+<p>If the value of <span class="math inline">\(b_m\)</span> exceeds the simulated inferred <span class="math inline">\(cap\)</span>, then the value will default to the <span class="math inline">\(cap\)</span> proportion like so:</p>
+<p><span class="math display">\[\text{b_m} =
+\begin{cases}
+\text{b_m}, &amp; \text{if b_m} &gt; \text{cap} \\
+\text{cap}, &amp; \text{if b_m} \le \text{cap}
+\end{cases}\]</span></p>
+<p><img src="https://raw.githubusercontent.com/PredictiveEcology/LandRCBM/main/manual/images/merchantabilityFit1.png" fig-align="center" width="650">
+*figure 1: comparison between merchantable proportion curves from the fitted function used in <code>Biomass_yieldTables</code> and the equations from <span class="citation">Boudewyn <em>et al.</em> (<a href="references.html#ref-boudewyn2007">2007</a>)</span> for a number of species</p>
+</div>
+<div id="outputs-1" class="section level3" number="2.3.3">
+<h3>
+<span class="header-section-number">2.3.3</span> Outputs<a class="anchor" aria-label="anchor" href="#outputs-1"><i class="fas fa-link"></i></a>
 </h3>
 <div class="inline-table"><table class="table table-sm">
 <colgroup>
@@ -301,9 +333,9 @@
 </tbody>
 </table></div>
 </div>
-<div id="links-to-other-modules-1" class="section level3" number="2.3.3">
+<div id="links-to-other-modules-1" class="section level3" number="2.3.4">
 <h3>
-<span class="header-section-number">2.3.3</span> Links to other modules<a class="anchor" aria-label="anchor" href="#links-to-other-modules-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3.4</span> Links to other modules<a class="anchor" aria-label="anchor" href="#links-to-other-modules-1"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li><a href="https://github.com/PredictiveEcology/CBM_defaults">CBM_defaults</a></li>
@@ -332,8 +364,9 @@
 <li>
 <a class="nav-link" href="#module-functioning-1"><span class="header-section-number">2.3</span> Module functioning</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#events-2"><span class="header-section-number">2.3.1</span> Events</a></li>
-<li><a class="nav-link" href="#outputs-1"><span class="header-section-number">2.3.2</span> Outputs</a></li>
-<li><a class="nav-link" href="#links-to-other-modules-1"><span class="header-section-number">2.3.3</span> Links to other modules</a></li>
+<li><a class="nav-link" href="#estimating-merchantable-proportion-of-stemwood"><span class="header-section-number">2.3.2</span> Estimating merchantable proportion of stemwood</a></li>
+<li><a class="nav-link" href="#outputs-1"><span class="header-section-number">2.3.3</span> Outputs</a></li>
+<li><a class="nav-link" href="#links-to-other-modules-1"><span class="header-section-number">2.3.4</span> Links to other modules</a></li>
 </ul>
 </li>
 </ul>
@@ -353,7 +386,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>LandRCBM Manual</strong>: v." was written by John Doe. It was last built on 2026-06-01.</p>
+    <p>"<strong>LandRCBM Manual</strong>: v." was written by John Doe. It was last built on 2026-06-02.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -361,6 +394,34 @@
   </div>
 
 </div></div>
-</footer>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
 </body>
 </html>

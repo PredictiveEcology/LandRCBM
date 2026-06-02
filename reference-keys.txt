@@ -26,5 +26,6 @@ summarizeagbpools
 plotyc
 plotmaps
 plotsummaries
+estimating-merchantable-proportion-of-stemwood
 outputs-1
 links-to-other-modules-1
