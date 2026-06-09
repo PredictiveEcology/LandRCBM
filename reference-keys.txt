@@ -26,6 +26,7 @@ summarizeagbpools
 plotyc
 plotmaps
 plotsummaries
+estimating-proportion-of-stemwood-bark-branches-and-foliage-biomass
 estimating-merchantable-proportion-of-stemwood
 outputs-1
 links-to-other-modules-1
