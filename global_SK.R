@@ -1,9 +1,13 @@
-projectPath <- "~/LandRCBM"
-repos <- c("predictiveecology.r-universe.dev", getOption("repos"))
-if (!require("SpaDES.project")){
-  Require::Install(c("SpaDES.project"), repos = repos, dependencies = TRUE)
+
+# Install SpaDES.project
+if (tryCatch(packageVersion("SpaDES.project") < "0.1.1", error = function(x) TRUE)){
+  install.packages("SpaDES.project", repos = "predictiveecology.r-universe.dev")
 }
 
+# Set project path
+projectPath <- "~/LandRCBM"
+
+# Set up project
 out <- SpaDES.project::setupProject(
   overwrite = FALSE,
   paths = list(projectPath = projectPath,
@@ -13,7 +17,7 @@ out <- SpaDES.project::setupProject(
                inputPath   = file.path(projectPath, "inputs"),
                cachePath   = file.path(projectPath, "cache")),
   options = options(
-    repos = c(repos = repos),
+    repos = unique(c("predictiveecology.r-universe.dev", getOption("repos"))),
     Require.cloneFrom = Sys.getenv("R_LIBS_USER"),
     spades.moduleCodeChecks = FALSE,
     spades.recoveryMode = FALSE,
