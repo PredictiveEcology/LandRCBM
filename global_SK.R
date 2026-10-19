@@ -37,11 +37,11 @@ out <- SpaDES.project::setupProject(
   
   params = list(
     .globals = list(
-      .plots = c("png"),
+      .plots = "png",
       .plotInterval = 10,
-      sppEquivCol = 'LandR',
       .studyAreaName = "SK",
-      dataYear = 2000
+      dataYear = 2000,
+      sppEquivCol = 'LandR'
     ),
     Biomass_borealDataPrep = list(
       subsetDataBiomassModel = 50
@@ -52,7 +52,6 @@ out <- SpaDES.project::setupProject(
       factorialSize = "medium"
     ),
     Biomass_speciesParameters = list(
-      .plots = "png",
       standAgesForFitting = c(0, 110),
       .useCache = c(".inputObjects", "init"),
       speciesFittingApproach = "focal"
@@ -60,7 +59,6 @@ out <- SpaDES.project::setupProject(
     Biomass_yieldTables = list(
       moduleNameAndBranch = "PredictiveEcology/Biomass_core@development",
       maxAge = 200,
-      .plots = "png",
       .useCache = "generateData"
     ),
     CBM_core = list(

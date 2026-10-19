@@ -44,24 +44,21 @@ out <- SpaDES.project::setupProject(
   
   params = list(
     .globals = list(
-      dataYear = 2020,
-      .plots = c("png"),
+      .plots = "png",
       .plotInterval = 10,
-      sppEquivCol = 'LandR',
-      .studyAreaName = "RIA"
+      .studyAreaName = "RIA",
+      dataYear = 2020,
+      sppEquivCol = 'LandR'
     ),
     Biomass_borealDataPrep = list(
-      .studyAreaName = "RIA",
       subsetDataBiomassModel = 50
     ),
     Biomass_yieldTables = list(
       moduleNameAndBranch = "PredictiveEcology/Biomass_core@development",
       maxAge = 200,
-      .plots = "png",
       .useCache = "generateData"
     ),
     Biomass_speciesParameters = list(
-      .plots = "png",
       standAgesForFitting = c(0, 110),
       .useCache = c(".inputObjects", "init"),
       speciesFittingApproach = "focal"
