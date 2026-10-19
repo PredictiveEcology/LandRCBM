@@ -50,7 +50,6 @@ out <- SpaDES.project::setupProject(
       sppEquivCol = 'LandR',
       .studyAreaName = "RIA"
     ),
-    Biomass_core = list(.plots = NA),
     Biomass_borealDataPrep = list(
       .studyAreaName = "RIA",
       subsetDataBiomassModel = 50
@@ -66,6 +65,9 @@ out <- SpaDES.project::setupProject(
       standAgesForFitting = c(0, 110),
       .useCache = c(".inputObjects", "init"),
       speciesFittingApproach = "focal"
+    ),
+    Biomass_core = list(
+      .plots = NA
     ),
     CBM_core = list(
       skipPrepareCBMvars = TRUE

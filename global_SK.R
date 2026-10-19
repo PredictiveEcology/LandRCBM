@@ -43,9 +43,6 @@ out <- SpaDES.project::setupProject(
       .studyAreaName = "SK",
       dataYear = 2000
     ),
-    CBM_core = list(
-      skipPrepareCBMvars = TRUE
-    ),
     Biomass_borealDataPrep = list(
       subsetDataBiomassModel = 50
     ),
@@ -65,6 +62,9 @@ out <- SpaDES.project::setupProject(
       maxAge = 200,
       .plots = "png",
       .useCache = "generateData"
+    ),
+    CBM_core = list(
+      skipPrepareCBMvars = TRUE
     )
   ),
   
