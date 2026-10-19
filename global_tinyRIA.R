@@ -87,11 +87,9 @@ out <- SpaDES.project::setupProject(
     rtm <- terra::mask(rtm, sa)
     rtm
   },
-  masterRaster = {
-    masterRaster = rasterToMatch
-    masterRaster
-  },
-  rasterToMatch_biomassParam = masterRaster, 
+  rasterToMatch_biomassParam = rasterToMatch, 
+  masterRaster = rasterToMatch,
+  
   sppEquiv = {
     speciesInStudy <- LandR::speciesInStudyArea(studyArea,
                                                 dPath = paths$inputPath)

@@ -95,10 +95,8 @@ out <- SpaDES.project::setupProject(
     rtm <- terra::rasterize(sa, rtm, field = "id", touches = FALSE)
     rtm
   },
-  masterRaster = {
-    masterRaster = rasterToMatch
-    masterRaster
-  },
+  masterRaster = rasterToMatch,
+  
   sppEquiv = {
     speciesInStudy <- LandR::speciesInStudyArea(studyArea,
                                                 dPath = paths$inputPath)
