@@ -38,12 +38,14 @@ out <- SpaDES.project::setupProject(
   # Study area is SK
   studyArea = {
     # saskatchewan boundaries
-    sk <- reproducible::prepInputs(url = "https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/files-fichiers/lpr_000a21a_e.zip",
-                                   destinationPath = "inputs")
+    sk <- reproducible::prepInputs(
+      url = "https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/files-fichiers/lpr_000a21a_e.zip",
+      destinationPath = paths$inputPath)
     sk <- sk[sk$PRENAME == "Saskatchewan",]
     # get ecozones
-    eco <- reproducible::prepInputs(url = "http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip",
-                                    destinationPath = "inputs", projectTo = sk)
+    eco <- reproducible::prepInputs(
+      url = "http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip",
+      destinationPath = paths$inputPath, projectTo = sk)
     sa <- reproducible::postProcessTo(eco, cropTo = sk, maskTo = sk) |>
       reproducible::Cache() |>
       sf::st_union() |>
@@ -65,7 +67,7 @@ out <- SpaDES.project::setupProject(
   },
   sppEquiv = {
     speciesInStudy <- LandR::speciesInStudyArea(studyArea,
-                                                dPath = "inputs")
+                                                dPath = paths$inputPath)
     species <- LandR::equivalentName(speciesInStudy$speciesList, df = LandR::sppEquivalencies_CA, "LandR")
     sppEquiv <- LandR::sppEquivalencies_CA[LandR %in% species]
     sppEquiv <- sppEquiv[KNN != "" & LANDIS_traits != ""] #avoid a bug with shore pine
