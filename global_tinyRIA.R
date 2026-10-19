@@ -5,7 +5,7 @@ if (tryCatch(packageVersion("SpaDES.project") < "0.1.1", error = function(x) TRU
 }
 
 # Set project path
-projectPath <- "~/LandRCBM"
+projectPath <- "~/GitHub/LandRCBM"
 
 # Set up project
 out <- SpaDES.project::setupProject(
