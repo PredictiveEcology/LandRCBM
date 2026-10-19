@@ -44,7 +44,7 @@ out <- SpaDES.project::setupProject(
   packages = c("googledrive", 'RCurl', 'XML', "stars", "httr2", "terra"),
   studyArea = {
     reproducible::prepInputs(
-      url = "https://drive.google.com/file/d/1LxacDOobTrRUppamkGgVAUFIxNT4iiHU/view?usp=sharing",
+      url = "https://drive.google.com/file/d/1LxacDOobTrRUppamkGgVAUFIxNT4iiHU",
       destinationPath = "~/inputs",
       fun = getRIA,
       overwrite = TRUE
