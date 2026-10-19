@@ -16,7 +16,9 @@ getRIA <- function(x) {
 }
 
 out <- SpaDES.project::setupProject(
-  overwrite = FALSE,
+  Restart = TRUE,
+  useGit = "PredictiveEcology",
+  overwrite = TRUE,
   paths = list(projectPath = projectPath,
                outputPath  = file.path(projectPath, "outputs", "tinyRIA"),
                modulePath  = file.path(projectPath, "modules"),
@@ -31,15 +33,15 @@ out <- SpaDES.project::setupProject(
     reproducible.useMemoise = TRUE),
   times = list(start = 2020, end = 2022),
   modules = c(
-    "PredictiveEcology/Biomass_speciesFactorial@development",
     "PredictiveEcology/Biomass_borealDataPrep@development",
+    "PredictiveEcology/Biomass_speciesFactorial@development",
     "PredictiveEcology/Biomass_speciesParameters@development",
-    "PredictiveEcology/CBM_defaults@main",
-    "PredictiveEcology/Biomass_yieldTables@main",
-    "PredictiveEcology/Biomass_core@main",
-    "PredictiveEcology/CBM_dataPrep@main",
+    "PredictiveEcology/CBM_defaults@development",
+    "PredictiveEcology/Biomass_yieldTables@development",
+    "PredictiveEcology/Biomass_core@development",
+    "PredictiveEcology/CBM_dataPrep@development",
     "PredictiveEcology/LandRCBM_split3pools@main",
-    "PredictiveEcology/CBM_core@main"
+    "PredictiveEcology/CBM_core@development"
   ),
   
   params = list(

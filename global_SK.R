@@ -9,7 +9,9 @@ projectPath <- "~/LandRCBM"
 
 # Set up project
 out <- SpaDES.project::setupProject(
-  overwrite = FALSE,
+  Restart = TRUE,
+  useGit = "PredictiveEcology",
+  overwrite = TRUE,
   paths = list(projectPath = projectPath,
                outputPath  = file.path(projectPath, "outputs", "SK"),
                modulePath  = file.path(projectPath, "modules"),
@@ -28,7 +30,7 @@ out <- SpaDES.project::setupProject(
     "PredictiveEcology/Biomass_speciesFactorial@development",
     "PredictiveEcology/Biomass_speciesParameters@development",
     "PredictiveEcology/CBM_defaults@development",
-    "PredictiveEcology/Biomass_yieldTables@main",
+    "PredictiveEcology/Biomass_yieldTables@development",
     "PredictiveEcology/Biomass_core@development",
     "PredictiveEcology/CBM_dataPrep@development",
     "PredictiveEcology/LandRCBM_split3pools@main",
