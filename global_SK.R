@@ -34,6 +34,40 @@ out <- SpaDES.project::setupProject(
     "PredictiveEcology/LandRCBM_split3pools@main",
     "PredictiveEcology/CBM_core@development"
   ),
+  
+  params = list(
+    .globals = list(
+      .plots = c("png"),
+      .plotInterval = 10,
+      sppEquivCol = 'LandR',
+      .studyAreaName = "SK",
+      dataYear = 2000
+    ),
+    CBM_core = list(
+      skipPrepareCBMvars = TRUE
+    ),
+    Biomass_borealDataPrep = list(
+      subsetDataBiomassModel = 50
+    ),
+    Biomass_speciesFactorial = list(
+      .plots = NULL, #"pdf",
+      runExperiment = TRUE,
+      factorialSize = "medium"
+    ),
+    Biomass_speciesParameters = list(
+      .plots = "png",
+      standAgesForFitting = c(0, 110),
+      .useCache = c(".inputObjects", "init"),
+      speciesFittingApproach = "focal"
+    ),
+    Biomass_yieldTables = list(
+      moduleNameAndBranch = "PredictiveEcology/Biomass_core@development",
+      maxAge = 200,
+      .plots = "png",
+      .useCache = "generateData"
+    )
+  ),
+  
   packages = c("googledrive", 'RCurl', 'XML', "stars", "httr2", "terra"),
   # Study area is SK
   studyArea = {
@@ -71,39 +105,7 @@ out <- SpaDES.project::setupProject(
     species <- LandR::equivalentName(speciesInStudy$speciesList, df = LandR::sppEquivalencies_CA, "LandR")
     sppEquiv <- LandR::sppEquivalencies_CA[LandR %in% species]
     sppEquiv <- sppEquiv[KNN != "" & LANDIS_traits != ""] #avoid a bug with shore pine
-  },
-  params = list(
-    .globals = list(
-      .plots = c("png"),
-      .plotInterval = 10,
-      sppEquivCol = 'LandR',
-      .studyAreaName = "SK",
-      dataYear = 2000
-    ),
-    CBM_core = list(
-      skipPrepareCBMvars = TRUE
-    ),
-    Biomass_borealDataPrep = list(
-      subsetDataBiomassModel = 50
-    ),
-    Biomass_speciesFactorial = list(
-      .plots = NULL, #"pdf",
-      runExperiment = TRUE,
-      factorialSize = "medium"
-    ),
-    Biomass_speciesParameters = list(
-      .plots = "png",
-      standAgesForFitting = c(0, 110),
-      .useCache = c(".inputObjects", "init"),
-      speciesFittingApproach = "focal"
-    ),
-    Biomass_yieldTables = list(
-      moduleNameAndBranch = "PredictiveEcology/Biomass_core@development",
-      maxAge = 200,
-      .plots = "png",
-      .useCache = "generateData"
-    )
-  )
+  }
 )
  
 out$loadOrder <- unlist(out$modules)

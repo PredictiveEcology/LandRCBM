@@ -41,6 +41,37 @@ out <- SpaDES.project::setupProject(
     "PredictiveEcology/LandRCBM_split3pools@main",
     "PredictiveEcology/CBM_core@main"
   ),
+  
+  params = list(
+    .globals = list(
+      dataYear = 2020,
+      .plots = c("png"),
+      .plotInterval = 10,
+      sppEquivCol = 'LandR',
+      .studyAreaName = "RIA"
+    ),
+    Biomass_core = list(.plots = NA),
+    Biomass_borealDataPrep = list(
+      .studyAreaName = "RIA",
+      subsetDataBiomassModel = 50
+    ),
+    Biomass_yieldTables = list(
+      moduleNameAndBranch = "PredictiveEcology/Biomass_core@development",
+      maxAge = 200,
+      .plots = "png",
+      .useCache = "generateData"
+    ),
+    Biomass_speciesParameters = list(
+      .plots = "png",
+      standAgesForFitting = c(0, 110),
+      .useCache = c(".inputObjects", "init"),
+      speciesFittingApproach = "focal"
+    ),
+    CBM_core = list(
+      skipPrepareCBMvars = TRUE
+    )
+  ),
+  
   packages = c("googledrive", 'RCurl', 'XML', "stars", "httr2", "terra"),
   studyArea = {
     reproducible::prepInputs(
@@ -71,39 +102,11 @@ out <- SpaDES.project::setupProject(
     species <- LandR::equivalentName(speciesInStudy$speciesList, df = LandR::sppEquivalencies_CA, "LandR")
     sppEquiv <- LandR::sppEquivalencies_CA[LandR %in% species]
     sppEquiv <- sppEquiv[KNN != "" & LANDIS_traits != ""] #avoid a bug with shore pine
-  },
-  params = list(
-    .globals = list(
-      dataYear = 2020,
-      .plots = c("png"),
-      .plotInterval = 10,
-      sppEquivCol = 'LandR',
-      .studyAreaName = "RIA"
-    ),
-    Biomass_core = list(.plots = NA),
-    Biomass_borealDataPrep = list(
-      .studyAreaName = "RIA",
-      subsetDataBiomassModel = 50
-    ),
-    Biomass_yieldTables = list(
-      moduleNameAndBranch = "PredictiveEcology/Biomass_core@development",
-      maxAge = 200,
-      .plots = "png",
-      .useCache = "generateData"
-    ),
-    Biomass_speciesParameters = list(
-      .plots = "png",
-      standAgesForFitting = c(0, 110),
-      .useCache = c(".inputObjects", "init"),
-      speciesFittingApproach = "focal"
-    ),
-    CBM_core = list(
-      skipPrepareCBMvars = TRUE
-    )
-  )
+  }
 )
 
 out$loadOrder <- unlist(out$modules)
 
 initOut <- SpaDES.core::simInit2(out)
 simOut <- SpaDES.core::spades(initOut)
+
