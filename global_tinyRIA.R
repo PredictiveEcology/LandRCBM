@@ -8,13 +8,6 @@ if (tryCatch(packageVersion("SpaDES.project") < "0.1.1", error = function(x) TRU
 projectPath <- "~/LandRCBM"
 
 # Set up project
-getRIA <- function(x) {
-  x <- sf::st_read(x) 
-  ria <- x[x$TSA_NUMBER %in% c('08', '16', '24', '40', '41'),]
-  ria <- sf::st_union(ria)|> sf::st_as_sf()
-  return(ria)
-}
-
 out <- SpaDES.project::setupProject(
   Restart = TRUE,
   useGit = "PredictiveEcology",
@@ -78,9 +71,11 @@ out <- SpaDES.project::setupProject(
     reproducible::prepInputs(
       url = "https://drive.google.com/file/d/1LxacDOobTrRUppamkGgVAUFIxNT4iiHU",
       destinationPath = paths$inputPath,
-      fun = getRIA,
-      overwrite = TRUE
-    ) |> sf::st_crop(c(xmin = 1000000, xmax = 1200000, ymin = 1100000, ymax = 1300000))
+      fun = sf::st_read(targetFile, quiet = TRUE)
+    ) |> 
+      subset(TSA_NUMBER %in% c('08', '16', '24', '40', '41')) |> 
+      sf::st_union() |> sf::st_as_sf() |>
+      sf::st_crop(c(xmin = 1000000, xmax = 1200000, ymin = 1100000, ymax = 1300000))
   },
   studyArea_biomassParam = studyArea,
   rasterToMatch = {
