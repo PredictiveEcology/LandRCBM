@@ -22,8 +22,9 @@ out <- SpaDES.project::setupProject(
     repos = unique(c("predictiveecology.r-universe.dev", getOption("repos"))),
     Require.cloneFrom = Sys.getenv("R_LIBS_USER"),
     spades.moduleCodeChecks = FALSE,
-    spades.recoveryMode = FALSE,
-    reproducible.useMemoise = TRUE),
+    spades.recoveryMode     = FALSE,
+    reproducible.useMemoise = FALSE
+  ),
   times = list(start = 2000, end = 2020),
   modules = c(
     "PredictiveEcology/Biomass_borealDataPrep@development",
