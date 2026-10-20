@@ -42,9 +42,9 @@ out <- SpaDES.project::setupProject(
     .globals = list(
       .plots = "png",
       .plotInterval = 10,
+      sppEquivCol = "LandR",
       .studyAreaName = "RIA",
-      dataYear = 2020,
-      sppEquivCol = 'LandR'
+      dataYear = 2020
     ),
     Biomass_borealDataPrep = list(
       subsetDataBiomassModel = 50
@@ -75,7 +75,7 @@ out <- SpaDES.project::setupProject(
       destinationPath = paths$inputPath,
       fun = sf::st_read(targetFile, quiet = TRUE)
     ) |> 
-      subset(TSA_NUMBER %in% c('08', '16', '24', '40', '41')) |> 
+      subset(TSA_NUMBER %in% c("08", "16", "24", "40", "41")) |> 
       sf::st_union() |> sf::st_as_sf() |>
       sf::st_crop(c(xmin = 1000000, xmax = 1200000, ymin = 1100000, ymax = 1300000))
   },

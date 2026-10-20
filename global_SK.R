@@ -42,9 +42,9 @@ out <- SpaDES.project::setupProject(
     .globals = list(
       .plots = "png",
       .plotInterval = 10,
+      sppEquivCol = "LandR",
       .studyAreaName = "SK",
-      dataYear = 2000,
-      sppEquivCol = 'LandR'
+      dataYear = 2000
     ),
     Biomass_borealDataPrep = list(
       subsetDataBiomassModel = 50
