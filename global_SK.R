@@ -68,7 +68,8 @@ out <- SpaDES.project::setupProject(
     )
   ),
   
-  packages = c("googledrive", 'RCurl', 'XML', "stars", "httr2", "terra"),
+  packages = c("reproducible", "googledrive", "sf", "terra", "PredictiveEcology/LandR@development"),
+  
   # Study area is SK
   studyArea = {
     # saskatchewan boundaries

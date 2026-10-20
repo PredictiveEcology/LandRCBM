@@ -66,7 +66,8 @@ out <- SpaDES.project::setupProject(
     )
   ),
   
-  packages = c("googledrive", 'RCurl', 'XML', "stars", "httr2", "terra"),
+  packages = c("reproducible", "googledrive", "sf", "terra", "PredictiveEcology/LandR@development"),
+  
   studyArea = {
     reproducible::prepInputs(
       url = "https://drive.google.com/file/d/1LxacDOobTrRUppamkGgVAUFIxNT4iiHU",
