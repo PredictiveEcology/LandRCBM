@@ -100,8 +100,7 @@ out <- SpaDES.project::setupProject(
   masterRaster = rasterToMatch,
   
   sppEquiv = {
-    speciesInStudy <- LandR::speciesInStudyArea(studyArea,
-                                                dPath = paths$inputPath)
+    speciesInStudy <- LandR::speciesInStudyArea(studyArea, dPath = paths$inputPath)
     species <- LandR::equivalentName(speciesInStudy$speciesList, df = LandR::sppEquivalencies_CA, "LandR")
     sppEquiv <- LandR::sppEquivalencies_CA[LandR %in% species]
     sppEquiv <- sppEquiv[KNN != "" & LANDIS_traits != ""] #avoid a bug with shore pine
