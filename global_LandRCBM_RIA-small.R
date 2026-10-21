@@ -43,7 +43,7 @@ out <- SpaDES.project::setupProject(
       .plots = "png",
       .plotInterval = 10,
       sppEquivCol = "LandR",
-      .studyAreaName = "RIA",
+      .studyAreaName = "RIA-small",
       dataYear = 2020
     ),
     Biomass_borealDataPrep = list(
