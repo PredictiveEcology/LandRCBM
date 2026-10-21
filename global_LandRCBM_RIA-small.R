@@ -69,26 +69,49 @@ out <- SpaDES.project::setupProject(
   
   packages = c("reproducible", "googledrive", "sf", "terra", "PredictiveEcology/LandR@development"),
   
+  # Align rasterToMatch with SCANFI raster grid
+  rasterToMatchTemplate = terra::rast(
+    xmin = -2341500, ymin = 5863500, 
+    xmax =  3010500, ymax = 9436500,
+    res = 30, crs = paste(
+      "PROJCRS[\"NAD_1983_Canada_Lambert\",",
+      "  BASEGEOGCRS[\"NAD83\",",
+      "   DATUM[\"North American Datum 1983\",ELLIPSOID[\"GRS 1980\",6378137,298.257222101004,LENGTHUNIT[\"metre\",1]]],",
+      "   PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433]],",
+      "   ID[\"EPSG\",4269]],",
+      "  CONVERSION[\"Lambert Conic Conformal (2SP)\",",
+      "   METHOD[\"Lambert Conic Conformal (2SP)\",ID[\"EPSG\",9802]],",
+      "   PARAMETER[\"Latitude of false origin\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8821]],",
+      "   PARAMETER[\"Longitude of false origin\",-95,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8822]],",
+      "   PARAMETER[\"Latitude of 1st standard parallel\",49,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8823]],",
+      "   PARAMETER[\"Latitude of 2nd standard parallel\",77,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8824]],",
+      "   PARAMETER[\"Easting at false origin\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8826]],",
+      "   PARAMETER[\"Northing at false origin\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8827]]],",
+      "  CS[Cartesian,2],",
+      "   AXIS[\"easting\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],",
+      "   AXIS[\"northing\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]"
+    )),
+  
   # Study area is a small area in the RIA
   studyArea = {
     reproducible::prepInputs(
       url = "https://drive.google.com/file/d/1LxacDOobTrRUppamkGgVAUFIxNT4iiHU",
-      destinationPath = paths$inputPath,
-      fun = sf::st_read(targetFile, quiet = TRUE)
-    ) |> 
+      destinationPath = paths$inputPath
+    ) |>
       subset(TSA_NUMBER %in% c("08", "16", "24", "40", "41")) |> 
-      sf::st_union() |> sf::st_as_sf() |>
-      sf::st_crop(c(xmin = 1000000, xmax = 1200000, ymin = 1100000, ymax = 1300000))
+      sf::st_union() |> 
+      sf::st_crop(c(xmin = 1000000, xmax = 1200000, ymin = 1100000, ymax = 1300000)) |>
+      sf::st_transform(sf::st_crs(rasterToMatchTemplate)) |>
+      sf::st_as_sf()
   },
   studyArea_biomassParam = studyArea,
   rasterToMatch = {
-    sa <- terra::vect(studyArea)
-    targetCRS <- terra::crs(sa)
-    rtm <- terra::rast(sa, res = c(250, 250))
-    terra::crs(rtm) <- targetCRS
-    rtm[] <- 1
-    rtm <- terra::mask(rtm, sa)
-    rtm
+    res <- 240
+    terra::rasterize(
+      studyArea, 
+      terra::crop(rasterToMatchTemplate, studyArea) |>
+        terra::aggregate(res / terra::res(rasterToMatchTemplate)[[1]]), 
+      touches = FALSE)
   },
   rasterToMatch_biomassParam = rasterToMatch, 
   masterRaster = rasterToMatch,
