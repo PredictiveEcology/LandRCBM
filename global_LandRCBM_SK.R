@@ -13,7 +13,7 @@ out <- SpaDES.project::setupProject(
   useGit = "PredictiveEcology",
   overwrite = TRUE,
   paths = list(projectPath = projectPath,
-               outputPath  = file.path(projectPath, "outputs", "SK"),
+               outputPath  = file.path(projectPath, "outputs", "LandRCBM_SK"),
                modulePath  = file.path(projectPath, "modules"),
                packagePath = file.path(projectPath, "packages"),
                inputPath   = file.path(projectPath, "inputs"),

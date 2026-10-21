@@ -13,7 +13,7 @@ out <- SpaDES.project::setupProject(
   useGit = "PredictiveEcology",
   overwrite = TRUE,
   paths = list(projectPath = projectPath,
-               outputPath  = file.path(projectPath, "outputs", "tinyRIA"),
+               outputPath  = file.path(projectPath, "outputs", "LandRCBM_RIA-small"),
                modulePath  = file.path(projectPath, "modules"),
                packagePath = file.path(projectPath, "packages"),
                inputPath   = file.path(projectPath, "inputs"),
@@ -30,12 +30,12 @@ out <- SpaDES.project::setupProject(
     "PredictiveEcology/Biomass_borealDataPrep@development",
     "PredictiveEcology/Biomass_speciesFactorial@development",
     "PredictiveEcology/Biomass_speciesParameters@development",
-    "PredictiveEcology/CBM_defaults@development",
     "PredictiveEcology/Biomass_yieldTables@development",
     "PredictiveEcology/Biomass_core@development",
+    "PredictiveEcology/CBM_defaults@development",
     "PredictiveEcology/CBM_dataPrep@development",
-    "PredictiveEcology/LandRCBM_split3pools@main",
-    "PredictiveEcology/CBM_core@development"
+    "PredictiveEcology/CBM_core@development",
+    "PredictiveEcology/LandRCBM_split3pools@main"
   ),
   
   params = list(
@@ -69,6 +69,7 @@ out <- SpaDES.project::setupProject(
   
   packages = c("reproducible", "googledrive", "sf", "terra", "PredictiveEcology/LandR@development"),
   
+  # Study area is a small area in the RIA
   studyArea = {
     reproducible::prepInputs(
       url = "https://drive.google.com/file/d/1LxacDOobTrRUppamkGgVAUFIxNT4iiHU",
