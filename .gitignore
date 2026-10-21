@@ -2,3 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
+.Rprofile
+cache/
+inputs/
+outputs/
+packages/
