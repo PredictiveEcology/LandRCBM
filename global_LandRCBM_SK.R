@@ -30,12 +30,12 @@ out <- SpaDES.project::setupProject(
     "PredictiveEcology/Biomass_borealDataPrep@development",
     "PredictiveEcology/Biomass_speciesFactorial@development",
     "PredictiveEcology/Biomass_speciesParameters@development",
-    "PredictiveEcology/CBM_defaults@development",
     "PredictiveEcology/Biomass_yieldTables@development",
     "PredictiveEcology/Biomass_core@development",
+    "PredictiveEcology/CBM_defaults@development",
     "PredictiveEcology/CBM_dataPrep@development",
-    "PredictiveEcology/LandRCBM_split3pools@main",
-    "PredictiveEcology/CBM_core@development"
+    "PredictiveEcology/CBM_core@CBM4"
+    "PredictiveEcology/LandRCBM_split3pools@CBM4",
   ),
   
   params = list(
@@ -65,7 +65,7 @@ out <- SpaDES.project::setupProject(
       .useCache = "generateData"
     ),
     CBM_core = list(
-      skipPrepareCBMvars = TRUE
+      cohort_fixed = FALSE
     )
   ),
   

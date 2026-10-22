@@ -35,8 +35,8 @@ out <- SpaDES.project::setupProject(
     "PredictiveEcology/Biomass_core@development",
     "PredictiveEcology/CBM_defaults@development",
     "PredictiveEcology/CBM_dataPrep@development",
-    "PredictiveEcology/LandRCBM_split3pools@main",
-    "PredictiveEcology/CBM_core@development",
+    "PredictiveEcology/CBM_core@CBM4",
+    "PredictiveEcology/LandRCBM_split3pools@CBM4",
     file.path("PredictiveEcology/scfm@development/modules",
               c("scfmDataPrep",
                 "scfmIgnition", "scfmEscape", "scfmSpread",
@@ -71,8 +71,7 @@ out <- SpaDES.project::setupProject(
       .useCache = "generateData"
     ),
     CBM_core = list(
-      skipPrepareCBMvars = TRUE,
-      .saveInterval = 10
+      cohort_fixed = FALSE
     ),
     scfmDataPrep = list(
       targetN = 4000,
