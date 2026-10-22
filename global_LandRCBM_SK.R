@@ -34,8 +34,8 @@ out <- SpaDES.project::setupProject(
     "PredictiveEcology/Biomass_core@development",
     "PredictiveEcology/CBM_defaults@development",
     "PredictiveEcology/CBM_dataPrep@development",
-    "PredictiveEcology/CBM_core@CBM4"
-    "PredictiveEcology/LandRCBM_split3pools@CBM4",
+    "PredictiveEcology/CBM_core@CBM4",
+    "PredictiveEcology/LandRCBM_split3pools@CBM4"
   ),
   
   params = list(
