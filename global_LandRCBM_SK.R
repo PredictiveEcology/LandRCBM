@@ -72,7 +72,7 @@ out <- SpaDES.project::setupProject(
   packages = c("reproducible", "googledrive", "sf", "terra", "PredictiveEcology/LandR@development"),
   
   # Study area is SK
-  studyArea = {
+  studyAreaPolygon = {
     reproducible::prepInputs(
       url = "https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/files-fichiers/lpr_000a21a_e.zip",
       destinationPath = paths$inputPath
@@ -80,8 +80,7 @@ out <- SpaDES.project::setupProject(
       subset(PRENAME == "Saskatchewan") |>
       sf::st_union() |>
       sf::st_buffer(-120) |>
-      sf::st_as_sf() |>
-      sf::st_transform(sf::st_crs(rasterToMatchTemplate))
+      sf::st_as_sf()
   },
   rasterToMatch = {
     # Align rasterToMatch with SCANFI raster grid
