@@ -29,15 +29,15 @@ out <- SpaDES.project::setupProject(
   modules = c(
     "PredictiveEcology/Biomass_borealDataPrep@development",
     "PredictiveEcology/Biomass_speciesFactorial@development",
-    "PredictiveEcology/Biomass_speciesParameters@development"
-    "DominiqueCaron/historicalDisturbances@main",
+    "PredictiveEcology/Biomass_speciesParameters@development",
     "PredictiveEcology/Biomass_regeneration@development",
     "PredictiveEcology/Biomass_yieldTables@development",
     "PredictiveEcology/Biomass_core@development",
     "PredictiveEcology/CBM_defaults@development",
     "PredictiveEcology/CBM_dataPrep@development",
     "PredictiveEcology/CBM_core@CBM4",
-    "PredictiveEcology/LandRCBM_split3pools@CBM4"
+    "PredictiveEcology/LandRCBM_split3pools@CBM4",
+    "DominiqueCaron/historicalDisturbances@main"
   ),
   
   params = list(
