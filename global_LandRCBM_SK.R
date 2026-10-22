@@ -84,7 +84,6 @@ out <- SpaDES.project::setupProject(
       sf::st_transform(sf::st_crs(rasterToMatchTemplate))
   },
   rasterToMatch = {
-    
     # Align rasterToMatch with SCANFI raster grid
     rasterToMatchRes <- 240
     rasterToMatchTemplate <- terra::rast(
@@ -108,7 +107,6 @@ out <- SpaDES.project::setupProject(
         "        AXIS[\"easting\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],",
         "        AXIS[\"northing\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]"
       ))
-    
     studyArea <- sf::st_transform(studyAreaPolygon, sf::st_crs(rasterToMatchTemplate))
     rasterToMatch <- rasterToMatchTemplate |>
       terra::crop(studyArea) |>
