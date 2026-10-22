@@ -27,23 +27,19 @@ out <- SpaDES.project::setupProject(
   ),
   times = list(start = 0, end = 10),
   modules = c(
-    file.path(
-      "PredictiveEcology/scfm@development/modules",
-      c("scfmDataPrep",
-        "scfmIgnition",
-        "scfmEscape",
-        "scfmSpread",
-        "scfmDiagnostics")
-    ),
-    c("PredictiveEcology/scfm_burnProbability@main",
-      "PredictiveEcology/Biomass_borealDataPrep@development",
-      "PredictiveEcology/CBM_defaults@development",
-      "PredictiveEcology/Biomass_yieldTables@development",
-      "PredictiveEcology/Biomass_core@development",
-      "PredictiveEcology/CBM_dataPrep@development",
-      "PredictiveEcology/LandRCBM_split3pools@main",
-      "PredictiveEcology/CBM_core@development",
-      "PredictiveEcology/LandRCBM_fireRisk@main")
+    "PredictiveEcology/Biomass_borealDataPrep@development",
+    "PredictiveEcology/Biomass_yieldTables@development",
+    "PredictiveEcology/Biomass_core@development",
+    "PredictiveEcology/CBM_defaults@development",
+    "PredictiveEcology/CBM_dataPrep@development",
+    "PredictiveEcology/LandRCBM_split3pools@main",
+    "PredictiveEcology/CBM_core@development",
+    file.path("PredictiveEcology/scfm@development/modules",
+              c("scfmDataPrep",
+                "scfmIgnition", "scfmEscape", "scfmSpread",
+                "scfmDiagnostics")),
+    "PredictiveEcology/scfm_burnProbability@main",
+    "PredictiveEcology/LandRCBM_fireRisk@main"
   ),
   
   params = list(
