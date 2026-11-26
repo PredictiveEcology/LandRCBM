@@ -72,31 +72,48 @@ out <- SpaDES.project::setupProject(
   packages = c("reproducible", "googledrive", "sf", "terra", "PredictiveEcology/LandR@development"),
   
   # Study area is SK
-  studyArea = {
-    # saskatchewan boundaries
-    sk <- reproducible::prepInputs(
+  studyAreaPolygon = {
+    reproducible::prepInputs(
       url = "https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/files-fichiers/lpr_000a21a_e.zip",
-      destinationPath = paths$inputPath)
-    sk <- sk[sk$PRENAME == "Saskatchewan",]
-    # get ecozones
-    eco <- reproducible::prepInputs(
-      url = "http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/ecozone_shp.zip",
-      destinationPath = paths$inputPath, projectTo = sk)
-    sa <- reproducible::postProcessTo(eco, cropTo = sk, maskTo = sk) |>
-      reproducible::Cache() |>
+      destinationPath = paths$inputPath
+    ) |>
+      subset(PRENAME == "Saskatchewan") |>
       sf::st_union() |>
-      sf::st_as_sf() |> sf::st_buffer(-125)
-    sa
+      sf::st_buffer(-120) |>
+      sf::st_as_sf()
   },
-  studyArea_biomassParam = studyArea,
   rasterToMatch = {
-    sa <- terra::vect(studyArea)
-    rtm <- terra::rast(sa, res = c(250, 250))
-    terra::crs(rtm) <- terra::crs(sa)
-    sa$id <- 1
-    rtm <- terra::rasterize(sa, rtm, field = "id", touches = FALSE)
-    rtm
+    # Align rasterToMatch with SCANFI raster grid
+    rasterToMatchRes <- 240
+    rasterToMatchTemplate <- terra::rast(
+      xmin = -2341500, ymin = 5863500,
+      xmax =  3010500, ymax = 9436500,
+      res = 30, crs = paste(
+        "PROJCRS[\"NAD_1983_Canada_Lambert\",",
+        "    BASEGEOGCRS[\"NAD83\",",
+        "        DATUM[\"North American Datum 1983\",ELLIPSOID[\"GRS 1980\",6378137,298.257222101004,LENGTHUNIT[\"metre\",1]]],",
+        "        PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433]],",
+        "        ID[\"EPSG\",4269]],",
+        "    CONVERSION[\"Lambert Conic Conformal (2SP)\",",
+        "        METHOD[\"Lambert Conic Conformal (2SP)\",ID[\"EPSG\",9802]],",
+        "        PARAMETER[\"Latitude of false origin\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8821]],",
+        "        PARAMETER[\"Longitude of false origin\",-95,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8822]],",
+        "        PARAMETER[\"Latitude of 1st standard parallel\",49,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8823]],",
+        "        PARAMETER[\"Latitude of 2nd standard parallel\",77,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8824]],",
+        "        PARAMETER[\"Easting at false origin\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8826]],",
+        "        PARAMETER[\"Northing at false origin\",0,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",8827]]],",
+        "    CS[Cartesian,2],",
+        "        AXIS[\"easting\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],",
+        "        AXIS[\"northing\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]"
+      ))
+    studyArea <- sf::st_transform(studyAreaPolygon, sf::st_crs(rasterToMatchTemplate))
+    rasterToMatch <- rasterToMatchTemplate |>
+      terra::crop(studyArea) |>
+      terra::aggregate(rasterToMatchRes / terra::res(rasterToMatchTemplate)[[1]])
+    terra::rasterize(studyArea, rasterToMatch)
   },
+  studyArea = sf::st_transform(studyAreaPolygon, sf::st_crs(rasterToMatch)),
+  studyArea_biomassParam = studyArea,
   masterRaster = rasterToMatch,
   
   sppEquiv = {
